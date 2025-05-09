@@ -37,21 +37,27 @@
       font-size: 1.3em;
       margin-top: 10px;
     }
-    nav {
-      background: #b30000;
-      text-align: center;
-      padding: 10px;
-    }
     nav a {
       color: #fff;
       margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s, transform 0.3s;
+    }
+    nav a:hover {
+      color: #f2d13d;
+      transform: scale(1.1);
+    }
+    nav a.active {
+      border-bottom: 2px solid #f2d13d;
     }
     section {
       padding: 40px 20px;
       max-width: 900px;
       margin: auto;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      margin-top: 30px;
     }
     h2 {
       border-bottom: 2px solid #5b3a29;
