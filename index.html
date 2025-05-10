@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Történelmi Lovagi Egyesület</title>
+  <title>Bajvívó Lovagok Egyesület</title>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
   <style>
     html {
       scroll-behavior: smooth;
@@ -18,9 +19,8 @@
     header {
       background: url('fejlec.jpg') center center / cover no-repeat;
       color: #fff;
-      text-shadow: 2px 2px 5px #000;
-      padding: 100px 20px;
       text-align: center;
+      padding: 100px 20px;
       position: relative;
     }
     header .overlay {
@@ -28,14 +28,35 @@
       padding: 30px;
       display: inline-block;
       border-radius: 10px;
+      animation: fadeInTitle 2s ease-out;
+    }
+    @keyframes fadeInTitle {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
     header h1 {
+      font-family: 'UnifrakturCook', cursive;
       font-size: 3em;
       margin: 0;
+      animation: flicker 3s infinite alternate;
     }
     header p {
       font-size: 1.3em;
       margin-top: 10px;
+    }
+    @keyframes flicker {
+      0% { opacity: 1; }
+      45% { opacity: 0.85; }
+      50% { opacity: 1; }
+      55% { opacity: 0.9; }
+      60% { opacity: 1; }
+      100% { opacity: 1; }
     }
     .logo {
       width: 80px;
@@ -107,7 +128,7 @@
   <header>
     <div class="overlay">
       <img src="logo.png" alt="Egyesület Logója" class="logo">
-      <h1>Történelmi Lovagi Egyesület</h1>
+      <h1>Bajvívó Lovagok Egyesület</h1>
       <p>Élő történelem – Lovagi tornák, bemutatók, élményprogramok</p>
     </div>
   </header>
@@ -150,7 +171,7 @@
   </section></div>
 
   <footer>
-    <p>&copy; 2025 Történelmi Lovagi Egyesület</p>
+    <p>&copy; 2025 Bajvívó Lovagok Egyesület</p>
   </footer>
 
   <script>
