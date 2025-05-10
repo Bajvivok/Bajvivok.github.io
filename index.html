@@ -73,6 +73,15 @@
       background-image: linear-gradient(to right, #3a2616, #7b5b3e, #3a2616);
       border-top: 2px solid #1e1307;
       border-bottom: 2px solid #1e1307;
+      opacity: 0;
+      transform: scaleX(0.6);
+      animation: fadeInSeparator 1s ease-out forwards;
+    }
+    @keyframes fadeInSeparator {
+      to {
+        opacity: 1;
+        transform: scaleX(1);
+      }
     }
     section {
       padding: 40px 20px;
@@ -99,7 +108,7 @@
       <h1>Történelmi Lovagi Egyesület</h1>
       <p>Élő történelem – Lovagi tornák, bemutatók, élményprogramok</p>
     </div>
-  $1
+  </header>
 
   <div class="separator"></div>
 
