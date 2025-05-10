@@ -105,16 +105,20 @@
       }
     }
     .keretes-szekcio {
-      background: url('keret.png') center center / contain no-repeat;
+      background: url('keret.png') center center / 100% 100% no-repeat;
       padding: 60px;
       margin: 40px auto;
-      max-width: 1000px;
-      position: relative;
+      max-width: 800px;
+      height: auto;
+      aspect-ratio: 4 / 3; /* vagy igazítsd a keret arányához */
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .keretes-szekcio section {
-      background: rgba(255, 255, 255, 0.85);
+      background: transparent;
       padding: 30px;
-      border-radius: 8px;
+      max-width: 90%;
     }
     footer {
       text-align: center;
