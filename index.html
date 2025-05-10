@@ -31,14 +31,8 @@
       animation: fadeInTitle 2s ease-out;
     }
     @keyframes fadeInTitle {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
     }
     header h1 {
       font-family: 'MedievalSharp', cursive;
@@ -99,27 +93,20 @@
       animation: fadeInSeparator 1s ease-out forwards;
     }
     @keyframes fadeInSeparator {
-      to {
-        opacity: 1;
-        transform: scaleX(1);
-      }
+      to { opacity: 1; transform: scaleX(1); }
     }
+
+    /* Új keretmentes stílus – régies papír hatás */
     .keretes-szekcio {
-      background: url('keret.png') center center / 100% 100% no-repeat;
-      padding: 60px;
+      background-color: rgba(255, 248, 220, 0.88);
+      padding: 40px;
       margin: 40px auto;
       max-width: 800px;
-      height: auto;
-      aspect-ratio: 4 / 3; /* vagy igazítsd a keret arányához */
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      border: 2px solid #7b5b3e;
     }
-    .keretes-szekcio section {
-      background: transparent;
-      padding: 30px;
-      max-width: 90%;
-    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -148,12 +135,12 @@
 
   <div class="separator"></div>
 
-  <div class="keretes-szekcio"><section id="bemutatkozas">
+  <section id="bemutatkozas" class="keretes-szekcio">
     <h2>Bemutatkozás</h2>
     <p>Egyesületünk célja a középkori lovagi kultúra hiteles bemutatása, látványos tornák, harci bemutatók és oktatási programok keretében.</p>
-  </section></div>
+  </section>
 
-  <div class="keretes-szekcio"><section id="szolgaltatasok">
+  <section id="szolgaltatasok" class="keretes-szekcio">
     <h2>Szolgáltatásaink</h2>
     <ul>
       <li>Lovagi torna bemutatók rendezvényeken</li>
@@ -161,18 +148,18 @@
       <li>Kézműves foglalkozások</li>
       <li>Történelmi fegyver- és viseletbemutatók</li>
     </ul>
-  </section></div>
+  </section>
 
-  <div class="keretes-szekcio"><section id="galeria">
+  <section id="galeria" class="keretes-szekcio">
     <h2>Galéria</h2>
     <p>Képeket ide lehet majd beilleszteni rendezvényeinkről.</p>
-  </section></div>
+  </section>
 
-  <div class="keretes-szekcio"><section id="kapcsolat">
+  <section id="kapcsolat" class="keretes-szekcio">
     <h2>Kapcsolat</h2>
     <p>Email: info@lovagitorna.hu<br>
        Telefon: +36 30 123 4567</p>
-  </section></div>
+  </section>
 
   <footer>
     <p>&copy; 2025 Bajvívó Lovagok Egyesülete</p>
