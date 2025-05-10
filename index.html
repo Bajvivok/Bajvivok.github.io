@@ -83,15 +83,17 @@
         transform: scaleX(1);
       }
     }
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
+    .keretes-szekcio {
+      background: url('keret.png') center center / contain no-repeat;
+      padding: 60px;
+      margin: 40px auto;
+      max-width: 1000px;
+      position: relative;
+    }
+    .keretes-szekcio section {
       background: rgba(255, 255, 255, 0.85);
-      border-radius: 10px;
-      margin-top: 30px;
-      border: 40px solid transparent;
-      border-image: url('kozepkori-keret.png') 40 round;
+      padding: 30px;
+      border-radius: 8px;
     }
     footer {
       text-align: center;
@@ -121,12 +123,12 @@
 
   <div class="separator"></div>
 
-  <section id="bemutatkozas">
+  <div class="keretes-szekcio"><section id="bemutatkozas">
     <h2>Bemutatkozás</h2>
     <p>Egyesületünk célja a középkori lovagi kultúra hiteles bemutatása, látványos tornák, harci bemutatók és oktatási programok keretében.</p>
-  </section>
+  </section></div>
 
-  <section id="szolgaltatasok">
+  <div class="keretes-szekcio"><section id="szolgaltatasok">
     <h2>Szolgáltatásaink</h2>
     <ul>
       <li>Lovagi torna bemutatók rendezvényeken</li>
@@ -134,18 +136,18 @@
       <li>Kézműves foglalkozások</li>
       <li>Történelmi fegyver- és viseletbemutatók</li>
     </ul>
-  </section>
+  </section></div>
 
-  <section id="galeria">
+  <div class="keretes-szekcio"><section id="galeria">
     <h2>Galéria</h2>
     <p>Képeket ide lehet majd beilleszteni rendezvényeinkről.</p>
-  </section>
+  </section></div>
 
-  <section id="kapcsolat">
+  <div class="keretes-szekcio"><section id="kapcsolat">
     <h2>Kapcsolat</h2>
     <p>Email: info@lovagitorna.hu<br>
        Telefon: +36 30 123 4567</p>
-  </section>
+  </section></div>
 
   <footer>
     <p>&copy; 2025 Történelmi Lovagi Egyesület</p>
