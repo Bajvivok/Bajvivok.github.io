@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bajvívó Lovagok Egyesülete</title>
-  <!-- Medieval betűtípus -->
-  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Történelmi Lovagi Egyesület</title>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
-      font-family: 'MedievalSharp', cursive;
       margin: 0;
-      padding: 0;
-      background: url('old-paper-with-torn-and-ripped-edges-900x1134.jpg') repeat;
-      background-size: cover;
-      color: #000000;
+      font-family: 'Georgia', serif;
+      background: url('old-paper-with-torn-and-ripped-edges-900x1134.jpg') center center / cover no-repeat;
+      background-attachment: fixed;
+      color: #2e1d12;
     }
     header {
       background: url('fejlec.jpg') center center / cover no-repeat;
@@ -37,15 +37,31 @@
       font-size: 1.3em;
       margin-top: 10px;
     }
+    .logo {
+      width: 80px;
+      height: auto;
+      display: block;
+      margin: 0 auto 15px;
+    }
+    nav {
+      background: url('anjou-liliom-minta.jpg') center center / cover no-repeat;
+      text-align: center;
+      padding: 15px;
+    }
     nav a {
       color: #fff;
-      margin: 0 15px;
+      margin: 0 20px;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s, transform 0.3s;
+      padding: 10px 15px;
+      display: inline-block;
+      background-color: rgba(58, 38, 22, 0.7);
+      border-radius: 8px;
+      transition: background-color 0.3s, transform 0.3s;
     }
     nav a:hover {
-      color: #f2d13d;
+      background-color: rgba(242, 209, 61, 0.9);
+      color: #2e1d12;
       transform: scale(1.1);
     }
     nav a.active {
@@ -59,104 +75,80 @@
       border-radius: 10px;
       margin-top: 30px;
     }
-    h2 {
-      border-bottom: 2px solid #5b3a29;
-      padding-bottom: 10px;
-      color: #b30000;
-    }
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
-    .gallery img {
-      width: 200px;
-      border: 3px solid #5b3a29;
-      border-radius: 8px;
-    }
     footer {
-      background: #000000;
-      color: #f2d13d;
       text-align: center;
       padding: 20px;
-    }
-    .contact {
-      background: #f9edcc;
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid #b30000;
-    }
-    .logo {
-      max-width: 150px;
-      margin-bottom: 20px;
+      background-color: #3a2616;
+      color: white;
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="overlay">
+      <img src="logo.png" alt="Egyesület Logója" class="logo">
+      <h1>Történelmi Lovagi Egyesület</h1>
+      <p>Élő történelem – Lovagi tornák, bemutatók, élményprogramok</p>
+    </div>
+  </header>
 
-<header>
-  <div class="overlay">
-    <img src="logo.png" alt="Egyesület Logója" class="logo">
-    <h1>Történelmi Lovagi Egyesület</h1>
-    <p>Élő történelem – Lovagi tornák, bemutatók, élményprogramok</p>
-  </div>
-</header>
+  <nav>
+    <a href="#bemutatkozas" class="menu-link">Bemutatkozás</a>
+    <a href="#szolgaltatasok" class="menu-link">Szolgáltatások</a>
+    <a href="#galeria" class="menu-link">Galéria</a>
+    <a href="#kapcsolat" class="menu-link">Kapcsolat</a>
+  </nav>
 
-<nav>
-  <a href="#bemutatkozas" class="menu-link">Bemutatkozás</a>
-  <a href="#szolgaltatasok" class="menu-link">Szolgáltatások</a>
-  <a href="#galeria" class="menu-link">Galéria</a>
-  <a href="#kapcsolat" class="menu-link">Kapcsolat</a>
-</nav>
+  <section id="bemutatkozas">
+    <h2>Bemutatkozás</h2>
+    <p>Egyesületünk célja a középkori lovagi kultúra hiteles bemutatása, látványos tornák, harci bemutatók és oktatási programok keretében.</p>
+  </section>
 
-<section id="bemutatkozas">
-  <h2>Bemutatkozás</h2>
-  <p>
-    A Diósdi Történelmi Bajvívó Egyesület 1994-ben alakult azzal a céllal, hogy a középkor játékaival és azok kutatásával, bemutatásával foglalkozzon. A tornaviadalokhoz hasonló játékok - gyűrűdöfés,botvívás - a lovagi tornák kiegészítői voltak, hiszen a közembereknek, városi polgároknak a látványos bajvívásokon kívül ez volt a szórakozás és az időtöltés egyik lehetősége. Így 1995 nyarán elkezdtünk középkori harcművészettel és ezen belül a lovagi tornák gyalogos párviadalaival foglalkozni a játékok mellett. Egyesületünk céljául tűzte ki a XIII-XIV-XV. századi magyar lovagi kultúra és hagyományok kutatását.
+  <section id="szolgaltatasok">
+    <h2>Szolgáltatásaink</h2>
+    <ul>
+      <li>Lovagi torna bemutatók rendezvényeken</li>
+      <li>Interaktív iskolai történelemórák</li>
+      <li>Kézműves foglalkozások</li>
+      <li>Történelmi fegyver- és viseletbemutatók</li>
+    </ul>
+  </section>
 
--Az Árpád-házi királyok utolsó évszázada,
--az Anjou Királyaink 80 éves uralkodásának időszaka,
--Luxemburgi Zsigmond uralkodásának kora.
+  <section id="galeria">
+    <h2>Galéria</h2>
+    <p>Képeket ide lehet majd beilleszteni rendezvényeinkről.</p>
+  </section>
 
-Fegyvereinket, eszközeinket, a kornak megfelelő öltözékeinket magunk készítjük számtalan lovagalakos sírkő,freskó és ötvös remekmű, illetve a XIV. századi magyar heraldika igen töredékes emlékei alapján. Egyesületünk fennállása óta kutatjuk hazánk középkori emlékeit, amelyet megjelenítünk viseletünkben és középkori poggyászunkban.
+  <section id="kapcsolat">
+    <h2>Kapcsolat</h2>
+    <p>Email: info@lovagitorna.hu<br>
+       Telefon: +36 30 123 4567</p>
+  </section>
 
-Hosszú évek folyamán számtalan településen tartottunk bemutatókat,és fontos feledatunknak tekintjük, hogy Magyarország legkisebb településeire is ugyanazt az egyedülálló,gazdagon díszített táborképet vigyük el, mint nemzetközi bemutatóinkra.
-Számunkra igen nagy megtiszteltetés, hogy a Visegrádi Nemzetközi Palotajátékokon több mint egy évtizede jelen lehetünk, és látványvilágának kialakításában jelentős szerepet vállalhatunk.
-  </p>
-</section>
+  <footer>
+    <p>&copy; 2025 Történelmi Lovagi Egyesület</p>
+  </footer>
 
-<section id="szolgaltatasok">
-  <h2>Szolgáltatásaink</h2>
-  <ul>
-    <li>Interaktív lovagi torna bemutatók gyerekeknek és felnőtteknek</li>
-    <li>Fegyverbemutató és kipróbálási lehetőség</li>
-    <li>Rendhagyó történelemóra iskolák számára</li>
-    <li>Tematikus programcsomagok falunapra, városnapra, várjátékokra</li>
-  </ul>
-</section>
+  <script>
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.menu-link');
 
-<section id="galeria">
-  <h2>Galéria</h2>
-  <div class="gallery">
-    <img src="IMG_2560.jpeg?text=Lovag+1" alt="Lovag 1">
-    <img src="lovag2.jpg?text=Lovag+2" alt="Lovag 2">
-    <img src="https://via.placeholder.com/200x150.png?text=Bemutató" alt="Bemutató">
-  </div>
-</section>
+    window.addEventListener('scroll', () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
 
-<section id="kapcsolat">
-  <h2>Kapcsolat</h2>
-  <div class="contact">
-    <p>📞 Telefon: +36 30 123 4567</p>
-    <p>✉️ E-mail: kozepkoriegyesulet@example.com</p>
-    <p>📍 Székhely: 1234 Lovagvár, Történelmi utca 1.</p>
-  </div>
-</section>
-
-<footer>
-  <p>&copy; 2025 Történelmi Lovagi Egyesület – Minden jog fenntartva.</p>
-</footer>
-
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
