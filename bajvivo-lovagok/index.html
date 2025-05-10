@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bajvívó Lovagok – Mihály lovag</title>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Cinzel+Decorative&family=Crimson+Pro&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: #f5f0e6;
+      font-family: 'IM Fell English SC', serif;
+      color: #3a2616;
+    }
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: #e8dcc2;
+      border-bottom: 3px solid #7b5b3e;
+    }
+    header h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.5em;
+      color: #6b2d1a;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .lovag {
+      text-align: center;
+      font-family: 'Crimson Pro', serif;
+    }
+    .keret {
+      padding: 12px;
+      border: 30px solid transparent;
+      border-image: url('keret.png') 60 round;
+      background-color: #fffdf8;
+    }
+    .keret img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .nev {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.3em;
+      color: #5e1c13;
+      margin: 15px 0 5px;
+    }
+    .leiras {
+      font-size: 0.95em;
+      color: #4e3c2a;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      background-color: #e2d4b7;
+      color: #3a2616;
+      border-top: 2px solid #7b5b3e;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+      .grid {
+        padding: 20px;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bajvívó Lovagok</h1>
+    <p>Középkori hőseink – képekben</p>
+  </header>
+
+  <div class="grid">
+    <div class="lovag">
+      <div class="keret">
+        <img src="mihaly1.jpeg" alt="Mihály lovag - dobás közben">
+      </div>
+      <p class="nev">Mihály lovag</p>
+      <p class="leiras">A Garajszki nemzetség büszkesége. A dobófegyverek mestere, számos tornán bizonyította bátorságát és ügyességét.</p>
+    </div>
+    <div class="lovag">
+      <div class="keret">
+        <img src="mihaly2.jpeg" alt="Mihály lovag – bemutató">
+      </div>
+      <p class="nev">Mihály lovag</p>
+      <p class="leiras">A hadgyakorlatok állandó szereplője. Kifinomult mozdulatai és történelmi hű öltözéke miatt a közönség kedvence.</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Bajvívó Lovagok Egyesülete
+  </footer>
+</body>
+</html>
