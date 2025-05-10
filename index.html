@@ -2,13 +2,10 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bajvívó Lovagok Egyesülete</title>
   <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
     body {
       margin: 0;
       font-family: 'Georgia', serif;
@@ -80,9 +77,6 @@
       color: #2e1d12;
       transform: scale(1.1);
     }
-    nav a.active {
-      border-bottom: 2px solid #f2d13d;
-    }
     .separator {
       height: 8px;
       background-color: #4e3620;
@@ -98,6 +92,20 @@
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
       border: 2px solid #7b5b3e;
+    }
+    .gallery {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      display: none;
+      border-radius: 10px;
+    }
+    .gallery img.active {
+      display: block;
     }
     footer {
       text-align: center;
@@ -122,10 +130,13 @@
   <div class="separator"></div>
 
   <nav>
-    <a href="#bemutatkozas" class="menu-link">Bemutatkozás</a>
-    <a href="#szolgaltatasok" class="menu-link">Szolgáltatások</a>
-    <a href="#galeria" class="menu-link">Galéria</a>
-    <a href="#kapcsolat" class="menu-link">Kapcsolat</a>
+    <a href="bajvivo-lovagok.html">Bajvívó Lovagok</a>
+    <a href="fegyvernokok.html">Fegyvernökök</a>
+    <a href="gyalogos-tornaviadal.html">Gyalogos Tornaviadal</a>
+    <a href="kozepkori-jatekok.html">Középkori Játékok</a>
+    <a href="kronika-kepekben.html">Krónika Képekben</a>
+    <a href="diosdi-udvarhaz.html">Diósdi Udvarház Elérhetősége</a>
+    <a href="barataink.html">Bajvívó Barátaink</a>
   </nav>
 
   <div class="separator"></div>
@@ -135,19 +146,13 @@
     <p>Egyesületünk célja a középkori lovagi kultúra hiteles bemutatása, látványos tornák, harci bemutatók és oktatási programok keretében.</p>
   </section>
 
-  <section id="szolgaltatasok" class="keretes-szekcio">
-    <h2>Szolgáltatásaink</h2>
-    <ul>
-      <li>Lovagi torna bemutatók rendezvényeken</li>
-      <li>Interaktív iskolai történelemórák</li>
-      <li>Kézműves foglalkozások</li>
-      <li>Történelmi fegyver- és viseletbemutatók</li>
-    </ul>
-  </section>
-
   <section id="galeria" class="keretes-szekcio">
     <h2>Galéria</h2>
-    <p>Képeket ide lehet majd beilleszteni rendezvényeinkről.</p>
+    <div class="gallery">
+      <img src="https://cdn.pixabay.com/photo/2016/11/29/04/17/knight-1867002_1280.jpg" class="active" alt="Lovag 1">
+      <img src="https://cdn.pixabay.com/photo/2017/02/01/22/02/knight-2038866_1280.jpg" alt="Lovag 2">
+      <img src="https://cdn.pixabay.com/photo/2016/11/29/04/17/knight-1867004_1280.jpg" alt="Lovag 3">
+    </div>
   </section>
 
   <section id="kapcsolat" class="keretes-szekcio">
@@ -161,25 +166,14 @@
   </footer>
 
   <script>
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.menu-link');
-
-    window.addEventListener('scroll', () => {
-      let current = "";
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (window.scrollY >= sectionTop) {
-          current = section.getAttribute('id');
-        }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
-        }
-      });
-    });
+    // Képgaléria automatikus váltása
+    const images = document.querySelectorAll('.gallery img');
+    let current = 0;
+    setInterval(() => {
+      images[current].classList.remove('active');
+      current = (current + 1) % images.length;
+      images[current].classList.add('active');
+    }, 4000); // 4 másodpercenként vált
   </script>
 </body>
 </html>
