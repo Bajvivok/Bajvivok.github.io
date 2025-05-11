@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="hu">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>
-   Bajvívó Lovagok
-  </title>
-  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&amp;family=Cinzel+Decorative&amp;family=Crimson+Pro&amp;display=swap" rel="stylesheet"/>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bajvívó Lovagok</title>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Cinzel+Decorative&family=Crimson+Pro&display=swap" rel="stylesheet">
   <style>
-   body {
+    body {
       margin: 0;
-      background: #f5f0e6;
+      background: url('background_seamless_mirrored.png') repeat center top;
+      background-size: cover;
       font-family: 'IM Fell English SC', serif;
       color: #3a2616;
     }
@@ -69,6 +68,7 @@
       max-width: 1200px;
       margin: 0 auto;
     }
+
     .lovag {
       text-align: center;
       font-family: 'Crimson Pro', serif;
@@ -83,12 +83,14 @@
 
     .nev {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 1.3em;
+      font-size: 1.5em;
+      font-weight: 700;
       color: #5e1c13;
       margin: 15px 0 5px;
     }
+
     .leiras {
-      font-size: 0.95em;
+      font-size: 1.05em;
       color: #4e3c2a;
       white-space: pre-line;
     }
@@ -108,160 +110,84 @@
         padding: 20px;
       }
     }
+
+    /* Flip card stílus */
+    .flip-container {
+      perspective: 1000px;
+    }
+    .flipper {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+    .flip-container:hover .flipper {
+      transform: rotateY(180deg);
+    }
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+    .back {
+      transform: rotateY(180deg);
+    }
   </style>
- </head>
- <body>
+</head>
+<body>
   <header>
-   <h1>
-    Bajvívó Lovagok
-   </h1>
-   <p>
-    Középkori hőseink – képekben
-   </p>
+    <h1>Bajvívó Lovagok</h1>
+    <p>Középkori hőseink – képekben</p>
   </header>
-  <div class="separator">
-  </div>
+
+  <div class="separator"></div>
+
   <nav>
-   <a href="../index.html">
-    Vissza a főoldalra
-   </a>
-   <a href="../bajvivo-lovagok/">
-    Bajvívó Lovagok
-   </a>
-   <a href="../gyalogos-tornaviadal.html">
-    Gyalogos Tornaviadal
-   </a>
-   <a href="../kozepkori-jatekok.html">
-    Középkori Játékok
-   </a>
-   <a href="../kronika-kepekben.html">
-    Krónika Képekben
-   </a>
-   <a href="../diosdi-udvarhaz.html">
-    Diósdi Udvarház Elérhetősége
-   </a>
-   <a href="../barataink.html">
-    Bajvívó Barátaink
-   </a>
+    <a href="../index.html">Vissza a főoldalra</a>
+    <a href="../gyalogos-tornaviadal.html">Gyalogos Tornaviadal</a>
+    <a href="../kozepkori-jatekok.html">Középkori Játékok</a>
+    <a href="../kronika-kepekben.html">Krónika Képekben</a>
+    <a href="../diosdi-udvarhaz.html">Diósdi Udvarház Elérhetősége</a>
+    <a href="../barataink.html">Bajvívó Barátaink</a>
   </nav>
-  <div class="separator">
-  </div>
+
+  <div class="separator"></div>
+
   <div class="grid">
-   <!-- Mihály lovag -->
-   <div class="lovag">
-    <img alt="Mihály lovag" class="lovag-kep" src="mihaly2_keretezett_illesztett.png"/>
-    <p class="nev">
-     Mihály lovag
-    </p>
-    <p class="leiras">
-     A Garajszki nemzetség tagja.
-Kiváló harcos és a tornák állandó résztvevője.
-    </p>
-   </div>
-   <!-- 9 további lovag -->
-   <div class="lovag">
-    <img alt="Kristóf lovag" class="lovag-kep" src="placeholder_kristóf.jpeg"/>
-    <p class="nev">
-     Kristóf lovag
-    </p>
-    <p class="leiras">
-     Fiatal, de már bizonyított a csatamezőn. Hűséges és bátor..
-    </p>
-   </div>
-   <div class="lovag">
-    <img alt="Gábor lovag" class="lovag-kep" src="placeholder_gábor.jpeg"/>
-    <p class="nev">
-     Gábor lovag
-    </p>
-    <p class="leiras">
-     Stratégiai gondolkodásáról ismert. Mesterien bánik a karddal..
-    </p>
-   </div>
-   <div class="lovag">
-    <img alt="László lovag" class="lovag-kep" src="placeholder_lászló.jpeg"/>
-    <p class="nev">
-     László lovag
-    </p>
-    <p class="leiras">
-     A bölcsesség és tapasztalat megtestesítője. Sok csatát megélt veterán..
-    </p>
-   </div>
-   <div class="lovag">
-    <img alt="Péter lovag" class="lovag-kep" src="placeholder_péter.jpeg"/>
-    <p class="nev">
-     Péter lovag
-    </p>
-    <p class="leiras">
-     Gyors és fürge, kiválóan használja a lándzsát..
-    </p>
-   </div>
-   <div class="lovag">
-    <img alt="Tamás lovag" class="lovag-kep" src="placeholder_tamás.jpeg"/>
-    <p class="nev">
-     Tamás lovag
-    </p>
-    <p class="leiras">
-     Erős és kitartó, a pajzs mestere..
-    </p>
-   </div>
-   <div class="lovag">
-    <img alt="Dávid lovag" class="lovag-kep" src="placeholder_dávid.jpeg"/>
-    <p class="nev">
-     Dávid lovag
-    </p>
-    <p class="leiras">
-     Kiváló íjász, messziről is pontos találatokat ér el..
-    </p>
-   </div>
-   <div class="lovag">
-    <img alt="Arnold lovag" class="lovag-kep" src="placeholder_arnold.jpeg"/>
-    <p class="nev">
-     Arnold lovag
-    </p>
-    <p class="leiras">
-     A lovagi tornák bajnoka, mindig tisztességesen küzd..
-    </p>
-   </div>
-   <div class="lovag">
-    <img alt="András lovag" class="lovag-kep" src="placeholder_andrás.jpeg"/>
-    <p class="nev">
-     András lovag
-    </p>
-    <p class="leiras">
-     Kiváló diplomata, aki a békét is előnyben részesíti..
-    </p>
-   </div>
-   <div class="lovag">
-    <img alt="Szilárd lovag" class="lovag-kep" src="placeholder_szilárd.jpeg"/>
-    <p class="nev">
-     Szilárd lovag
-    </p>
-    <p class="leiras">
-     A hűség és becsület mintaképe, mindig kiáll társai mellett..
-    </p>
-   </div>
-   <!-- Apródok -->
-   <div class="lovag">
-    <img alt="Gábor apród" class="lovag-kep" src="placeholder_aprod_gábor.jpeg"/>
-    <p class="nev">
-     Gábor apród
-    </p>
-    <p class="leiras">
-     A dicsőség útján.
-    </p>
-   </div>
-   <div class="lovag">
-    <img alt="Csaba apród" class="lovag-kep" src="placeholder_aprod_csaba.jpeg"/>
-    <p class="nev">
-     Csaba apród
-    </p>
-    <p class="leiras">
-     A dicsőség útján.
-    </p>
-   </div>
+    <div class="lovag">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="mihaly2_keretezett_illesztett.png" alt="Mihály lovag" class="lovag-kep" />
+          </div>
+          <div class="back">
+            <img src="placeholder_back_mihaly.jpeg" alt="Mihály lovag hátoldal" class="lovag-kep" />
+          </div>
+        </div>
+      </div>
+      <p class="nev">Mihály lovag</p>
+      <p class="leiras">A Garajszki nemzetség tagja.
+Kiváló harcos és a tornák állandó résztvevője.</p>
+    </div>
+
+    <!-- További lovagok változatlanul -->
+    <div class="lovag"><img src="placeholder_kristóf.jpeg" alt="Kristóf lovag" class="lovag-kep"><p class="nev">Kristóf lovag</p><p class="leiras">Fiatal, de már bizonyított a csatamezőn. Hűséges és bátor.</p></div>
+    <div class="lovag"><img src="placeholder_gábor.jpeg" alt="Gábor lovag" class="lovag-kep"><p class="nev">Gábor lovag</p><p class="leiras">Stratégiai gondolkodásáról ismert. Mesterien bánik a karddal.</p></div>
+    <div class="lovag"><img src="placeholder_lászló.jpeg" alt="László lovag" class="lovag-kep"><p class="nev">László lovag</p><p class="leiras">A bölcsesség és tapasztalat megtestesítője. Sok csatát megélt veterán.</p></div>
+    <div class="lovag"><img src="placeholder_péter.jpeg" alt="Péter lovag" class="lovag-kep"><p class="nev">Péter lovag</p><p class="leiras">Gyors és fürge, kiválóan használja a lándzsát.</p></div>
+    <div class="lovag"><img src="placeholder_tamás.jpeg" alt="Tamás lovag" class="lovag-kep"><p class="nev">Tamás lovag</p><p class="leiras">Erős és kitartó, a pajzs mestere.</p></div>
+    <div class="lovag"><img src="placeholder_dávid.jpeg" alt="Dávid lovag" class="lovag-kep"><p class="nev">Dávid lovag</p><p class="leiras">Kiváló íjász, messziről is pontos találatokat ér el.</p></div>
+    <div class="lovag"><img src="placeholder_arnold.jpeg" alt="Arnold lovag" class="lovag-kep"><p class="nev">Arnold lovag</p><p class="leiras">A lovagi tornák bajnoka, mindig tisztességesen küzd.</p></div>
+    <div class="lovag"><img src="placeholder_andrás.jpeg" alt="András lovag" class="lovag-kep"><p class="nev">András lovag</p><p class="leiras">Kiváló diplomata, aki a békét is előnyben részesíti.</p></div>
+    <div class="lovag"><img src="placeholder_szilárd.jpeg" alt="Szilárd lovag" class="lovag-kep"><p class="nev">Szilárd lovag</p><p class="leiras">A hűség és becsület mintaképe, mindig kiáll társai mellett.</p></div>
+    <div class="lovag"><img src="placeholder_aprod_gábor.jpeg" alt="Gábor apród" class="lovag-kep"><p class="nev">Gábor apród</p><p class="leiras">A dicsőség útján.</p></div>
+    <div class="lovag"><img src="placeholder_aprod_csaba.jpeg" alt="Csaba apród" class="lovag-kep"><p class="nev">Csaba apród</p><p class="leiras">A dicsőség útján.</p></div>
   </div>
+
   <footer>
-   © 2025 Bajvívó Lovagok Egyesülete
+    &copy; 2025 Bajvívó Lovagok Egyesülete
   </footer>
- </body>
+</body>
 </html>
