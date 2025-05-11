@@ -103,6 +103,7 @@
     .leiras {
       font-size: 0.95em;
       color: #4e3c2a;
+      white-space: pre-line;
     }
 
     footer {
@@ -150,30 +151,28 @@
   <div class="separator"></div>
 
   <div class="grid">
-    <!-- Lovagok -->
-    <!-- Ezeket a placeholder_*.jpeg fájlokat később képre lehet cserélni -->
-    % for nev in ["Mihály", "Kristóf", "Gábor", "László", "Péter", "Tamás", "Dávid", "Arnold", "András", "Szilárd"]:
+    <!-- Mihály lovag keret nélkül -->
     <div class="lovag">
-      <div class="lovag-keretes">
-        <img src="placeholder_{{ nev.lower() }}.jpeg" alt="{{ nev }} lovag" class="lovag-kep" />
-        <img src="keret-overlay.png" class="keret-overlay" alt="keret dísz" />
-      </div>
-      <p class="nev">{{ nev }} lovag</p>
-      <p class="leiras">Helyfoglalás a későbbi bemutatáshoz.</p>
+      <img src="mihaly2_keretezett_illesztett.png" alt="Mihály lovag" class="lovag-kep" />
+      <p class="nev">Mihály lovag</p>
+      <p class="leiras">A Garajszki nemzetség tagja.
+Kiváló harcos és a tornák állandó résztvevője.</p>
     </div>
-    % endfor
+
+    <!-- A többi lovag -->
+    <div class="lovag"><div class="lovag-keretes"><img src="placeholder_kristóf.jpeg" alt="Kristóf lovag" class="lovag-kep"><img src="keret-overlay.png" class="keret-overlay" alt="keret dísz"></div><p class="nev">Kristóf lovag</p><p class="leiras">Helyfoglalás a későbbi bemutatáshoz.</p></div>
+    <div class="lovag"><div class="lovag-keretes"><img src="placeholder_gábor.jpeg" alt="Gábor lovag" class="lovag-kep"><img src="keret-overlay.png" class="keret-overlay" alt="keret dísz"></div><p class="nev">Gábor lovag</p><p class="leiras">Helyfoglalás a későbbi bemutatáshoz.</p></div>
+    <div class="lovag"><div class="lovag-keretes"><img src="placeholder_lászló.jpeg" alt="László lovag" class="lovag-kep"><img src="keret-overlay.png" class="keret-overlay" alt="keret dísz"></div><p class="nev">László lovag</p><p class="leiras">Helyfoglalás a későbbi bemutatáshoz.</p></div>
+    <div class="lovag"><div class="lovag-keretes"><img src="placeholder_péter.jpeg" alt="Péter lovag" class="lovag-kep"><img src="keret-overlay.png" class="keret-overlay" alt="keret dísz"></div><p class="nev">Péter lovag</p><p class="leiras">Helyfoglalás a későbbi bemutatáshoz.</p></div>
+    <div class="lovag"><div class="lovag-keretes"><img src="placeholder_tamás.jpeg" alt="Tamás lovag" class="lovag-kep"><img src="keret-overlay.png" class="keret-overlay" alt="keret dísz"></div><p class="nev">Tamás lovag</p><p class="leiras">Helyfoglalás a későbbi bemutatáshoz.</p></div>
+    <div class="lovag"><div class="lovag-keretes"><img src="placeholder_dávid.jpeg" alt="Dávid lovag" class="lovag-kep"><img src="keret-overlay.png" class="keret-overlay" alt="keret dísz"></div><p class="nev">Dávid lovag</p><p class="leiras">Helyfoglalás a későbbi bemutatáshoz.</p></div>
+    <div class="lovag"><div class="lovag-keretes"><img src="placeholder_arnold.jpeg" alt="Arnold lovag" class="lovag-kep"><img src="keret-overlay.png" class="keret-overlay" alt="keret dísz"></div><p class="nev">Arnold lovag</p><p class="leiras">Helyfoglalás a későbbi bemutatáshoz.</p></div>
+    <div class="lovag"><div class="lovag-keretes"><img src="placeholder_andrás.jpeg" alt="András lovag" class="lovag-kep"><img src="keret-overlay.png" class="keret-overlay" alt="keret dísz"></div><p class="nev">András lovag</p><p class="leiras">Helyfoglalás a későbbi bemutatáshoz.</p></div>
+    <div class="lovag"><div class="lovag-keretes"><img src="placeholder_szilárd.jpeg" alt="Szilárd lovag" class="lovag-kep"><img src="keret-overlay.png" class="keret-overlay" alt="keret dísz"></div><p class="nev">Szilárd lovag</p><p class="leiras">Helyfoglalás a későbbi bemutatáshoz.</p></div>
 
     <!-- Fegyvernökök -->
-    % for nev in ["Gábor", "Csaba"]:
-    <div class="lovag">
-      <div class="lovag-keretes">
-        <img src="placeholder_fegyvernok_{{ nev.lower() }}.jpeg" alt="{{ nev }} fegyvernök" class="lovag-kep" />
-        <img src="keret-overlay.png" class="keret-overlay" alt="keret dísz" />
-      </div>
-      <p class="nev">{{ nev }} fegyvernök</p>
-      <p class="leiras">A dicsőség útján.</p>
-    </div>
-    % endfor
+    <div class="lovag"><div class="lovag-keretes"><img src="placeholder_fegyvernok_gábor.jpeg" alt="Gábor fegyvernök" class="lovag-kep"><img src="keret-overlay.png" class="keret-overlay" alt="keret dísz"></div><p class="nev">Gábor fegyvernök</p><p class="leiras">A dicsőség útján.</p></div>
+    <div class="lovag"><div class="lovag-keretes"><img src="placeholder_fegyvernok_csaba.jpeg" alt="Csaba fegyvernök" class="lovag-kep"><img src="keret-overlay.png" class="keret-overlay" alt="keret dísz"></div><p class="nev">Csaba fegyvernök</p><p class="leiras">A dicsőség útján.</p></div>
   </div>
 
   <footer>
