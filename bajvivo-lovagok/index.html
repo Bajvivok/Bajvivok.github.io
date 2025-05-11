@@ -22,6 +22,38 @@
       font-family: 'Cinzel Decorative', serif;
       font-size: 2.5em;
       color: #6b2d1a;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.1em;
+      font-family: 'Crimson Pro', serif;
+    }
+    nav {
+      background: #7b5b3e;
+      padding: 15px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      background-color: #5e3e2c;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-family: 'Crimson Pro', serif;
+      display: inline-block;
+    }
+    nav a:hover {
+      background-color: #dab97d;
+      color: #3a2616;
+    }
+    .separator {
+      height: 8px;
+      background-color: #4e3620;
+      background-image: linear-gradient(to right, #3a2616, #7b5b3e, #3a2616);
+      border-top: 2px solid #1e1307;
+      border-bottom: 2px solid #1e1307;
     }
     .grid {
       display: grid;
@@ -43,7 +75,8 @@
     }
     .keret img {
       width: 100%;
-      height: auto;
+      height: 400px;
+      object-fit: cover;
       display: block;
     }
     .nev {
@@ -68,6 +101,10 @@
       header h1 {
         font-size: 1.8em;
       }
+      nav a {
+        display: block;
+        margin: 10px auto;
+      }
       .grid {
         padding: 20px;
         gap: 20px;
@@ -80,6 +117,18 @@
     <h1>Bajvívó Lovagok</h1>
     <p>Középkori hőseink – képekben</p>
   </header>
+
+  <nav>
+    <a href="../index.html">Vissza a főoldalra</a>
+    <a href="../bajvivo-lovagok/">Bajvívó Lovagok</a>
+    <a href="../gyalogos-tornaviadal.html">Gyalogos Tornaviadal</a>
+    <a href="../kozepkori-jatekok.html">Középkori Játékok</a>
+    <a href="../kronika-kepekben.html">Krónika Képekben</a>
+    <a href="../diosdi-udvarhaz.html">Diósdi Udvarház Elérhetősége</a>
+    <a href="../barataink.html">Bajvívó Barátaink</a>
+  </nav>
+
+  <div class="separator"></div>
 
   <div class="grid">
     <div class="lovag">
