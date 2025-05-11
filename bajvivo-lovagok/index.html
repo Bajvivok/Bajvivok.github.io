@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bajvívó Lovagok – Mihály lovag</title>
+  <title>Bajvívó Lovagok</title>
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Cinzel+Decorative&family=Crimson+Pro&display=swap" rel="stylesheet">
   <style>
     body {
@@ -50,21 +50,13 @@
       color: #2e1d12;
       transform: scale(1.1);
     }
+
     .separator {
       height: 8px;
       background-color: #4e3620;
       background-image: linear-gradient(to right, #3a2616, #7b5b3e, #3a2616);
       border-top: 2px solid #1e1307;
       border-bottom: 2px solid #1e1307;
-    }
-    .keretes-szekcio {
-      background-color: rgba(255, 248, 220, 0.88);
-      padding: 40px;
-      margin: 40px auto;
-      max-width: 800px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-      border: 2px solid #7b5b3e;
     }
 
     .grid {
@@ -143,8 +135,11 @@
     <p>Középkori hőseink – képekben</p>
   </header>
 
+  <div class="separator"></div>
+
   <nav>
     <a href="../index.html">Vissza a főoldalra</a>
+    <a href="../bajvivo-lovagok/">Bajvívó Lovagok</a>
     <a href="../gyalogos-tornaviadal.html">Gyalogos Tornaviadal</a>
     <a href="../kozepkori-jatekok.html">Középkori Játékok</a>
     <a href="../kronika-kepekben.html">Krónika Képekben</a>
@@ -155,22 +150,30 @@
   <div class="separator"></div>
 
   <div class="grid">
+    <!-- Lovagok -->
+    <!-- Ezeket a placeholder_*.jpeg fájlokat később képre lehet cserélni -->
+    % for nev in ["Mihály", "Kristóf", "Gábor", "László", "Péter", "Tamás", "Dávid", "Arnold", "András", "Szilárd"]:
     <div class="lovag">
       <div class="lovag-keretes">
-        <img src="mihaly1.jpeg" alt="Mihály lovag - dobás közben" class="lovag-kep">
-        <img src="keret-overlay.png" class="keret-overlay" alt="keret dísz">
+        <img src="placeholder_{{ nev.lower() }}.jpeg" alt="{{ nev }} lovag" class="lovag-kep" />
+        <img src="keret-overlay.png" class="keret-overlay" alt="keret dísz" />
       </div>
-      <p class="nev">Mihály lovag</p>
-      <p class="leiras">A Garajszki nemzetség büszkesége. A dobófegyverek mestere, számos tornán bizonyította bátorságát és ügyességét.</p>
+      <p class="nev">{{ nev }} lovag</p>
+      <p class="leiras">Helyfoglalás a későbbi bemutatáshoz.</p>
     </div>
+    % endfor
+
+    <!-- Fegyvernökök -->
+    % for nev in ["Gábor", "Csaba"]:
     <div class="lovag">
       <div class="lovag-keretes">
-        <img src="mihaly2.jpeg" alt="Mihály lovag – bemutató" class="lovag-kep">
-        <img src="keret-overlay.png" class="keret-overlay" alt="keret dísz">
+        <img src="placeholder_fegyvernok_{{ nev.lower() }}.jpeg" alt="{{ nev }} fegyvernök" class="lovag-kep" />
+        <img src="keret-overlay.png" class="keret-overlay" alt="keret dísz" />
       </div>
-      <p class="nev">Mihály lovag</p>
-      <p class="leiras">A hadgyakorlatok állandó szereplője. Kifinomult mozdulatai és történelmi hű öltözéke miatt a közönség kedvence.</p>
+      <p class="nev">{{ nev }} fegyvernök</p>
+      <p class="leiras">A dicsőség útján.</p>
     </div>
+    % endfor
   </div>
 
   <footer>
