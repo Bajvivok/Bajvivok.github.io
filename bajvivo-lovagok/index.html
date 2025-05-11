@@ -28,26 +28,29 @@
       font-size: 1.1em;
       font-family: 'Crimson Pro', serif;
     }
+
     nav {
-      background: #7b5b3e;
-      padding: 15px;
+      background: url('anjou-liliom-minta.jpg') center center / cover no-repeat;
       text-align: center;
+      padding: 15px;
     }
     nav a {
-      color: white;
-      margin: 0 10px;
+      color: #fff;
+      margin: 0 20px;
       text-decoration: none;
       font-weight: bold;
-      background-color: #5e3e2c;
       padding: 10px 15px;
-      border-radius: 6px;
-      font-family: 'Crimson Pro', serif;
       display: inline-block;
+      background-color: rgba(58, 38, 22, 0.7);
+      border-radius: 8px;
+      transition: background-color 0.3s, transform 0.3s;
     }
     nav a:hover {
-      background-color: #dab97d;
-      color: #3a2616;
+      background-color: rgba(242, 209, 61, 0.9);
+      color: #2e1d12;
+      transform: scale(1.1);
     }
+
     .separator {
       height: 8px;
       background-color: #4e3620;
@@ -55,6 +58,7 @@
       border-top: 2px solid #1e1307;
       border-bottom: 2px solid #1e1307;
     }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -97,6 +101,7 @@
       color: #3a2616;
       border-top: 2px solid #7b5b3e;
     }
+
     @media (max-width: 600px) {
       header h1 {
         font-size: 1.8em;
