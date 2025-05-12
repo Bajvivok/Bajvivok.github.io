@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bajvívó Lovagok</title>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Cinzel+Decorative&family=Crimson+Pro&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: url('background_seamless_mirrored.png') repeat top left;
+      background-size: 100% auto;
+      font-family: 'IM Fell English SC', serif;
+      color: #3a2616;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: #e8dcc2;
+      border-bottom: 3px solid #7b5b3e;
+    }
+
+    header h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.5em;
+      color: #6b2d1a;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1em;
+      font-family: 'Crimson Pro', serif;
+    }
+
+    nav {
+      background: url('anjou-liliom-minta.jpg') center center / cover no-repeat;
+      text-align: center;
+      padding: 15px;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 15px;
+      display: inline-block;
+      background-color: rgba(58, 38, 22, 0.7);
+      border-radius: 8px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    nav a:hover {
+      background-color: rgba(242, 209, 61, 0.9);
+      color: #2e1d12;
+      transform: scale(1.1);
+    }
+
+    .separator {
+      height: 8px;
+      background-color: #4e3620;
+      background-image: linear-gradient(to right, #3a2616, #7b5b3e, #3a2616);
+      border-top: 2px solid #1e1307;
+      border-bottom: 2px solid #1e1307;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .lovag {
+      text-align: center;
+      font-family: 'Crimson Pro', serif;
+    }
+
+    .lovag-kep {
+      display: block;
+      width: 100%;
+      height: 500px;
+      object-fit: contain;
+    }
+
+    .nev {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.5em;
+      font-weight: 700;
+      color: #5e1c13;
+      margin: 15px 0 5px;
+    }
+
+    .leiras {
+      font-size: 1.05em;
+      color: #4e3c2a;
+      white-space: pre-line;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      background-color: #e2d4b7;
+      color: #3a2616;
+      border-top: 2px solid #7b5b3e;
+    }
+
+    @media (max-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+    }
+
+    .flip-container {
+      perspective: 1000px;
+    }
+
+    .flipper {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+
+    .flip-container:hover .flipper {
+      transform: rotateY(180deg);
+    }
+
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+
+    .back {
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bajvívó Lovagok</h1>
+    <p>Középkori hőseink – képekben</p>
+  </header>
+
+  <div class="separator"></div>
+
+  <nav>
+    <a href="../index.html">Vissza a főoldalra</a>
+    <a href="../gyalogos-tornaviadal.html">Gyalogos Tornaviadal</a>
+    <a href="../kozepkori-jatekok.html">Középkori Játékok</a>
+    <a href="../kronika-kepekben.html">Krónika Képekben</a>
+    <a href="../diosdi-udvarhaz.html">Diósdi Udvarház Elérhetősége</a>
+    <a href="../barataink.html">Bajvívó Barátaink</a>
+  </nav>
+
+  <div class="separator"></div>
+
+  <div class="grid">
+    <div class="lovag">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="mihaly2_keretezett_illesztett.png" alt="Mihály lovag" class="lovag-kep" />
+          </div>
+          <div class="back">
+            <img src="placeholder_back_mihaly.png" alt="Mihály lovag hátoldal" class="lovag-kep" />
+          </div>
+        </div>
+      </div>
+      <p class="nev">Mihály lovag</p>
+      <p class="leiras">A Garajszki nemzetség tagja.
+Kiváló harcos és a tornák állandó résztvevője.</p>
+    </div>
+
+    <!-- További lovagok változatlanul -->
+  </div>
+
+  <footer>
+    &copy; 2025 Bajvívó Lovagok Egyesülete
+  </footer>
+</body>
+</html>
