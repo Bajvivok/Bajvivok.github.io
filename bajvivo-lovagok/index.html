@@ -22,12 +22,20 @@
       border-bottom: 3px solid #7b5b3e;
     }
 
-    .header-image {
+    .header-image-left {
       position: absolute;
       left: 0;
       bottom: 0;
       height: 120px;
       margin-left: 10px;
+    }
+
+    .header-image-right {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      height: 120px;
+      margin-right: 10px;
     }
 
     header h1 {
@@ -123,6 +131,10 @@
         grid-template-columns: 1fr;
         padding: 20px;
       }
+      .header-image-left,
+      .header-image-right {
+        display: none;
+      }
     }
 
     .flip-container {
@@ -155,7 +167,8 @@
 </head>
 <body>
   <header>
-    <img src="IMG_0244_transparent.png" alt="Lovagok harca" class="header-image" />
+    <img src="IMG_0244_transparent.png" alt="Lovagok harca" class="header-image-left" />
+    <img src="IMG_0252.PNG" alt="Lovagok vívása" class="header-image-right" />
     <h1>Bajvívó Lovagok</h1>
     <p>Középkori hőseink – képekben</p>
   </header>
