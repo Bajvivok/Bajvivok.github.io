@@ -100,6 +100,10 @@
       object-fit: contain;
     }
 
+    area {
+      cursor: pointer;
+    }
+
     @media (max-width: 700px) {
       .header-image-left,
       .header-image-right {
@@ -130,25 +134,39 @@
   <div class="separator"></div>
 
   <main>
-    <img src="A_traditional,_medieval,_circular_illustration_dep.png" alt="Középkori tábor illusztráció" class="main-top" />
+    <div style="position: relative; display: inline-block; width: 100%;">
+      <img
+        src="A_traditional,_medieval,_circular_illustration_dep.png"
+        alt="Interaktív tábor"
+        usemap="#tabor-terkep"
+        class="main-top"
+      />
+      <map name="tabor-terkep">
+        <area shape="circle" coords="330,370,60" href="#sator" alt="Sátor" title="Sátor" />
+        <area shape="circle" coords="420,220,40" href="#tabla" alt="Dobótábla" title="Dobótábla" />
+        <area shape="poly" coords="100,300,120,350,130,360,150,310" href="#palank" alt="Palánk" title="Palánk" />
+        <area shape="rect" coords="250,410,320,460" href="#fegyverallvany" alt="Fegyverállvány" title="Fegyverállvány" />
+        <area shape="rect" coords="140,470,200,510" href="#fegyverlada" alt="Fegyverláda" title="Fegyverláda" />
+      </map>
+    </div>
 
-    <section class="section">
+    <section class="section" id="sator">
       <h2>Sátor</h2>
     </section>
 
-    <section class="section">
+    <section class="section" id="tabla">
       <h2>Tábla</h2>
     </section>
 
-    <section class="section">
+    <section class="section" id="palank">
       <h2>Palánk</h2>
     </section>
 
-    <section class="section">
+    <section class="section" id="fegyverallvany">
       <h2>Fegyverállvány</h2>
     </section>
 
-    <section class="section">
+    <section class="section" id="fegyverlada">
       <h2>Fegyverláda</h2>
     </section>
   </main>
