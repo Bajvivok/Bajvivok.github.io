@@ -81,10 +81,23 @@
       border-bottom: 2px solid #1e1307;
     }
 
-    main {
-      background: url('A_traditional,_medieval,_circular_illustration_dep.png') center center / cover no-repeat;
-      background-attachment: fixed;
-      min-height: 100vh;
+    .section {
+      padding: 40px 20px;
+      text-align: center;
+      font-family: 'Crimson Pro', serif;
+    }
+
+    .section h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2em;
+      color: #5e1c13;
+      margin-bottom: 20px;
+    }
+
+    .main-top {
+      width: 100%;
+      display: block;
+      object-fit: contain;
     }
 
     @media (max-width: 700px) {
@@ -117,7 +130,27 @@
   <div class="separator"></div>
 
   <main>
-    <!-- háttérkép tölti ki a teljes main szekciót -->
+    <img src="A_traditional,_medieval,_circular_illustration_dep.png" alt="Középkori tábor illusztráció" class="main-top" />
+
+    <section class="section">
+      <h2>Sátor</h2>
+    </section>
+
+    <section class="section">
+      <h2>Tábla</h2>
+    </section>
+
+    <section class="section">
+      <h2>Palánk</h2>
+    </section>
+
+    <section class="section">
+      <h2>Fegyverállvány</h2>
+    </section>
+
+    <section class="section">
+      <h2>Fegyverláda</h2>
+    </section>
   </main>
 
   <footer>
