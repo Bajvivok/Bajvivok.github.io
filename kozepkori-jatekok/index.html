@@ -109,12 +109,13 @@
 
     .hotspot {
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.2s, filter 0.2s;
     }
 
     .hotspot:hover {
-      transform: scale(1.05);
-    }
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 6px #ffc107);
+}
 
     @media (max-width: 700px) {
       .header-image-left,
@@ -152,7 +153,7 @@
       <a xlink:href="#sator">
         <circle class="hotspot" cx="330" cy="370" r="60" fill="red" fill-opacity="0" />
       </a>
-      <a href="#tabla">
+      <a xlink:href="#tabla">
         <circle class="hotspot" cx="420" cy="220" r="40" fill="red" fill-opacity="0" />
       </a>
       <a href="#palank">
@@ -162,7 +163,7 @@
         <rect class="hotspot" x="250" y="410" width="70" height="50" fill="red" fill-opacity="0" />
       </a>
       <a href="#fegyverlada">
-        <rect class="hotspot" x="140" y="470" width="60" height="40" fill="transparent" />
+        <rect class="hotspot" x="140" y="470" width="60" height="40" fill="red" fill-opacity="0" />
       </a>
     </svg>
 
