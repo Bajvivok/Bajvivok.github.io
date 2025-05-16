@@ -3,59 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bajvívó Lovagok</title>
+  <title>Bajvívó Lovagok Egyesülete</title>
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Cinzel+Decorative&family=Crimson+Pro&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      background: url('background_seamless_mirrored.png') repeat top left;
-      background-size: cover;
-      font-family: 'IM Fell English SC', serif;
-      color: #3a2616;
+      font-family: 'Georgia', serif;
+      background: url('old-paper-with-torn-and-ripped-edges-900x1134.jpg') center center / cover no-repeat fixed;
+      color: #2e1d12;
     }
-
     header {
       position: relative;
-      text-align: center;
-      padding: 40px 20px;
-      background: #e8dcc2;
-      border-bottom: 3px solid #7b5b3e;
+      height: 480px;
+      overflow: hidden;
     }
-
-    .header-image-left {
+    header video {
       position: absolute;
+      top: 0;
       left: 0;
-      bottom: 0;
-      height: 120px;
-      margin-left: 10px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
     }
-
-    .header-image-right {
+    header .overlay {
       position: absolute;
-      right: 0;
-      bottom: 0;
-      height: 120px;
-      margin-right: 10px;
+      z-index: 2;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      text-align: center;
+      padding: 30px;
+      border-radius: 10px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: fit-content;
     }
-
     header h1 {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 2.5em;
-      color: #6b2d1a;
-      margin-bottom: 10px;
+      font-family: 'MedievalSharp', cursive;
+      font-size: 2.7em;
+      margin: 0;
     }
-
     header p {
-      font-size: 1.1em;
-      font-family: 'Crimson Pro', serif;
+      font-size: 1.3em;
+      margin-top: 10px;
     }
-
+    .logo {
+      width: 80px;
+      height: auto;
+      display: block;
+      margin: 0 auto 15px;
+    }
     nav {
       background: url('anjou-liliom-minta.jpg') center center / cover no-repeat;
       text-align: center;
       padding: 15px;
     }
-
     nav a {
       color: #fff;
       margin: 0 20px;
@@ -67,13 +71,11 @@
       border-radius: 8px;
       transition: background-color 0.3s, transform 0.3s;
     }
-
     nav a:hover {
       background-color: rgba(242, 209, 61, 0.9);
       color: #2e1d12;
       transform: scale(1.1);
     }
-
     .separator {
       height: 8px;
       background-color: #4e3620;
@@ -81,179 +83,197 @@
       border-top: 2px solid #1e1307;
       border-bottom: 2px solid #1e1307;
     }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
+    .keretes-szekcio {
+      background-color: rgba(255, 248, 220, 0.88);
       padding: 40px;
-      max-width: 1200px;
+      margin: 40px auto;
+      max-width: 800px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      border: 2px solid #7b5b3e;
+    }
+
+    #bemutatkozas {
+      font-family: 'IM Fell English SC', serif;
+      color: #4b1e1e;
+      line-height: 1.8;
+    }
+    #bemutatkozas p {
+      font-family: 'Crimson Pro', serif;
+      color: #532d1e;
+    }
+    #bemutatkozas ul li {
+      font-family: 'Cinzel Decorative', serif;
+      color: #7a3d0e;
+      font-weight: bold;
+    }
+    #bemutatkozas strong {
+      color: #a65c00;
+      font-family: 'Cinzel Decorative', serif;
+    }
+    #bemutatkozas p:first-of-type::first-letter {
+      font-size: 2.8em;
+      float: left;
+      color: #8b1c13;
+      padding-right: 6px;
+      font-weight: bold;
+      font-family: 'Cinzel Decorative', serif;
+    }
+
+    #kapcsolat {
+      font-family: 'Crimson Pro', serif;
+      color: #3d1f10;
+    }
+    #kapcsolat strong {
+      font-family: 'Cinzel Decorative', serif;
+      color: #7a3d0e;
+      font-size: 1.2em;
+    }
+    #kapcsolat a {
+      color: #6c2f0d;
+      text-decoration: none;
+    }
+    #kapcsolat a:hover {
+      text-decoration: underline;
+    }
+
+    .gallery {
+      position: relative;
+      max-width: 800px;
+      height: 500px;
+      overflow: hidden;
       margin: 0 auto;
     }
-
-    .lovag {
-      text-align: center;
-      font-family: 'Crimson Pro', serif;
-    }
-
-    .lovag-kep {
-      display: block;
+    .gallery img {
       width: 100%;
-      max-height: 520px;
-      object-fit: contain;
+      height: 500px;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
-
-    .nev {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 1.5em;
-      font-weight: 700;
-      color: #5e1c13;
-      margin: 15px 0 5px;
-    }
-
-    .leiras {
-      font-size: 1.05em;
-      color: #4e3c2a;
-      white-space: pre-line;
+    .gallery img.active {
+      opacity: 1;
+      z-index: 2;
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      font-size: 0.9em;
-      background-color: #e2d4b7;
-      color: #3a2616;
-      border-top: 2px solid #7b5b3e;
+      background-color: #3a2616;
+      color: white;
     }
 
-    @media (max-width: 700px) {
-      .grid {
-        grid-template-columns: 1fr;
-        padding: 20px;
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.95em;
       }
-      .header-image-left,
-      .header-image-right {
-        display: none;
+      header h1 {
+        font-size: 1.8em;
       }
-    }
-
-    .flip-container {
-      perspective: 1000px;
-    }
-
-    .flipper {
-      position: relative;
-      width: 100%;
-      height: 520px;
-      transform-style: preserve-3d;
-      transition: transform 0.6s;
-    }
-
-    .flip-container:hover .flipper {
-      transform: rotateY(180deg);
-    }
-
-    .front, .back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-    }
-
-    .back {
-      transform: rotateY(180deg);
+      .keretes-szekcio {
+        width: 90%;
+        padding: 5vw;
+      }
+      .gallery {
+        height: auto;
+      }
+      .gallery img {
+        height: auto;
+        aspect-ratio: 4 / 3;
+        position: relative;
+      }
+      nav {
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+      nav a {
+        flex: 1 1 auto;
+        min-width: 100px;
+        text-align: center;
+        padding: 12px 20px;
+        font-size: 1.1em;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="IMG_0244_transparent.png" alt="Lovagok harca" class="header-image-left" />
-    <img src="IMG_0252.PNG" alt="Lovagok vívása" class="header-image-right" />
-    <h1>Bajvívó Lovagok</h1>
-    <p>Középkori hőseink – képekben</p>
+    <video autoplay muted loop playsinline>
+      <source src="burning_effect_header_1280x480.mp4" type="video/mp4" />
+    </video>
+    <div class="overlay">
+      <img src="logo.png" alt="Egyesület Logója" class="logo" />
+      <h1>Bajvívó Lovagok Egyesülete</h1>
+      <p>Élő történelem – Lovagi tornák, bemutatók, élményprogramok</p>
+    </div>
   </header>
 
   <div class="separator"></div>
 
   <nav>
-    <a href="../index.html">Vissza a főoldalra</a>
-    <a href="../gyalogos-tornaviadal.html">Gyalogos Tornaviadal</a>
-    <a href="../kozepkori-jatekok/">Középkori Játékok</a>
-    <a href="../kronika-kepekben.html">Krónika Képekben</a>
-    <a href="../diosdi-udvarhaz.html">Diósdi Udvarház Elérhetősége</a>
-    <a href="../barataink.html">Bajvívó Barátaink</a>
+    <a href="bajvivo-lovagok/">Bajvívó Lovagok</a>
+    <a href="gyalogos-tornaviadal/">Gyalogos Tornaviadal</a>
+    <a href="kozepkori-jatekok/">Középkori Játékok</a>
+    <a href="kronika-kepekben/">Krónika Képekben</a>
+    <a href="diosdi-udvarhaz.html">Diósdi Udvarház Elérhetősége</a>
+    <a href="barataink.html">Bajvívó Barátaink</a>
   </nav>
 
   <div class="separator"></div>
 
-  <div class="grid">
-    <!-- Mihály lovag -->
-    <div class="lovag">
-      <div class="flip-container">
-        <div class="flipper">
-          <div class="front">
-            <img src="IMG_0253.png" alt="Mihály lovag" class="lovag-kep" />
-          </div>
-          <div class="back">
-            <img src="cimer_keretezett_illesztve.png" alt="Mihály lovag címere" class="lovag-kep" />
-          </div>
-        </div>
-      </div>
-      <p class="nev">Mihály lovag</p>
-      <p class="leiras">A Garajszki nemzetség tagja. Kiváló harcos és a tornák állandó résztvevője.</p>
-    </div>
+  <section id="bemutatkozas" class="keretes-szekcio">
+    <h2>Bemutatkozás</h2>
+    <p>A Bajvívó Lovagok Egyesülete 1994-ben alakult...</p>
+    <!-- Tartalom rövidítve -->
+    <p><strong>Tisztelettel: Bajvívó Lovagok Egyesülete</strong></p>
+  </section>
 
-    <!-- Gábor lovag -->
-    <div class="lovag">
-      <div class="flip-container">
-        <div class="flipper">
-          <div class="front">
-            <img src="gabor_lovag_illesztett.png" alt="Gábor lovag" class="lovag-kep" />
-          </div>
-          <div class="back">
-            <img src="cimer_keretezett_illesztve.png" alt="Gábor lovag címere" class="lovag-kep" />
-          </div>
-        </div>
-      </div>
-      <p class="nev">Gábor lovag</p>
-      <p class="leiras">A diósdi udvarház alapító tagja, hűséges társ.</p>
+  <section class="keretes-szekcio">
+    <h2>Videó</h2>
+    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;">
+      <iframe src="https://www.youtube.com/embed/eplmjfnMqVs?list=PPSV"
+              style="position:absolute;top:0;left:0;width:100%;height:100%;"
+              frameborder="0"
+              allowfullscreen>
+      </iframe>
     </div>
+  </section>
 
-    <!-- Szilárd lovag -->
-    <div class="lovag">
-      <div class="flip-container">
-        <div class="flipper">
-          <div class="front">
-            <img src="szilard_lovag_illesztett.png" alt="Szilárd lovag" class="lovag-kep" />
-          </div>
-          <div class="back">
-            <img src="cimer_keretezett_illesztve.png" alt="Szilárd lovag címere" class="lovag-kep" />
-          </div>
-        </div>
-      </div>
-      <p class="nev">Szilárd lovag</p>
-      <p class="leiras">Nevéhez méltó szilárdsággal állja a próbákat.</p>
+  <section id="galeria" class="keretes-szekcio">
+    <h2>Galéria</h2>
+    <div class="gallery">
+      <img src="IMG_0214.jpeg" class="active" alt="Lovag 1" />
+      <img src="IMG_0216.jpeg" alt="Lovag 2" />
+      <img src="IMG_0217.jpeg" alt="Lovag 3" />
+      <img src="IMG_2560.jpeg" alt="Lovag 4" />
     </div>
+  </section>
 
-    <!-- Péter lovag -->
-    <div class="lovag">
-      <div class="flip-container">
-        <div class="flipper">
-          <div class="front">
-            <img src="peter_lovag_illesztett.png" alt="Péter lovag" class="lovag-kep" />
-          </div>
-          <div class="back">
-            <img src="cimer_keretezett_illesztve.png" alt="Péter lovag címere" class="lovag-kep" />
-          </div>
-        </div>
-      </div>
-      <p class="nev">Péter lovag</p>
-      <p class="leiras">Kitartásban és állóképességben verhetetlen.</p>
-    </div>
-  </div>
+  <section id="kapcsolat" class="keretes-szekcio">
+    <h2>Kapcsolat</h2>
+    <p><strong>Erdélyi Gábor</strong><br>
+    2049 Diósd Pf. 83<br>
+    Telefon: +36 20 923 0170<br>
+    Email: <a href="mailto:bajvivok@t-online.hu">bajvivok@t-online.hu</a></p>
+  </section>
 
   <footer>
-    &copy; 2025 Bajvívó Lovagok Egyesülete
+    <p>&copy; 2025 Bajvívó Lovagok Egyesülete</p>
   </footer>
+
+  <script>
+    const images = document.querySelectorAll('.gallery img');
+    let current = 0;
+    setInterval(() => {
+      images[current].classList.remove('active');
+      current = (current + 1) % images.length;
+      images[current].classList.add('active');
+    }, 5000);
+  </script>
 </body>
 </html>
