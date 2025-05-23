@@ -190,11 +190,35 @@
         overflow-x: scroll;
       }
     }
-  </style>
+  #back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #7b5b3e;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 1.2em;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: background 0.3s;
+}
+#back-to-top:hover {
+  background: #a67c52;
+}
+
+@media (max-width: 600px) {
+  .header-image-left,
+  .header-image-right {
+    display: none;
+  }
+}
+</style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 </head>
-<body>
+<body id="top">
   <header>
     <img src="liliom-bal.png" alt="Bal oldali dísz" class="header-image-left">
     <img src="liliom-jobb.png" alt="Jobb oldali dísz" class="header-image-right">
@@ -252,6 +276,8 @@
   </script>
     </div>
   </main>
+
+  <a href="#top" id="back-to-top" title="Ugrás a tetejére">⬆</a>
   <script>
     const lightbox = GLightbox({ selector: '.glightbox' });
   </script>
