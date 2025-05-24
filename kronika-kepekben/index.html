@@ -199,13 +199,21 @@
   padding: 10px 15px;
   border-radius: 50%;
   text-decoration: none;
-  font-size: 1.2em;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  font-size: 1.5em;
+  line-height: 1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   z-index: 1000;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.3s;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #back-to-top:hover {
   background: #a67c52;
+  transform: scale(1.1);
 }
 
 @media (max-width: 600px) {
@@ -213,12 +221,97 @@
   .header-image-right {
     display: none;
   }
+  header {
+    padding: 20px 10px;
+  }
+  header h1 {
+    font-size: 1.5em;
+  }
+  header p {
+    font-size: 1em;
+  }
+  nav a {
+    display: block;
+    margin: 10px auto;
+    width: 90%;
+  }
+  .preview-images {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .preview-images img {
+    width: 100%;
+  }
+  .toggle-button {
+    width: 100%;
+    text-align: center;
+  }
+  .year-scroll {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    font-size: 0.8em;
+  }
 }
+}
+#back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #7b5b3e;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 1.5em;
+  line-height: 1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: background 0.3s, transform 0.3s;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#back-to-top:hover {
+  background: #a67c52;
+  transform: scale(1.1);
+}
+
+#back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #7b5b3e;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 1.5em;
+  line-height: 1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  transition: background 0.3s, transform 0.3s;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#back-to-top:hover {
+  background: #a67c52;
+  transform: scale(1.1);
+}
+
 </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 </head>
-<body id="top">
+<body id="top" style="position: relative; min-height: 100vh;">
   <header>
     <img src="liliom-bal.png" alt="Bal oldali dísz" class="header-image-left">
     <img src="liliom-jobb.png" alt="Jobb oldali dísz" class="header-image-right">
