@@ -4,13 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bajvívó Lovagok Egyesülete</title>
-
-  <!-- Leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
   <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Cinzel+Decorative&family=Crimson+Pro&display=swap" rel="stylesheet">
-
   <style>
     body {
       margin: 0;
@@ -18,193 +13,302 @@
       background: url('old-paper-with-torn-and-ripped-edges-900x1134.jpg') center center / cover no-repeat fixed;
       color: #2e1d12;
     }
-    header { position: relative; height: 480px; overflow: hidden; }
-    header video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+    header {
+      position: relative;
+      height: 480px;
+      overflow: hidden;
+    }
+    header video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
     header .overlay {
-      position: absolute; z-index: 2; background: rgba(0, 0, 0, 0.5); color: #fff;
-      text-align: center; padding: 30px; border-radius: 10px;
-      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      position: absolute;
+      z-index: 2;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      text-align: center;
+      padding: 30px;
+      border-radius: 10px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: fit-content;
     }
-    header h1 { font-family: 'MedievalSharp', cursive; font-size: 2.7em; margin: 0; }
-    header p { font-size: 1.3em; margin-top: 10px; }
-
-    nav { background: url('anjou-liliom-minta.jpg') center center / cover no-repeat; text-align: center; padding: 15px; }
+    header h1 {
+      font-family: 'MedievalSharp', cursive;
+      font-size: 2.7em;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.3em;
+      margin-top: 10px;
+    }
+    .logo {
+      width: 80px;
+      height: auto;
+      display: block;
+      margin: 0 auto 15px;
+    }
+    nav {
+      background: url('anjou-liliom-minta.jpg') center center / cover no-repeat;
+      text-align: center;
+      padding: 15px;
+    }
     nav a {
-      color: #fff; margin: 0 20px; text-decoration: none; font-weight: bold;
-      padding: 10px 15px; display: inline-block;
-      background-color: rgba(58, 38, 22, 0.7); border-radius: 8px;
+      color: #fff;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 15px;
+      display: inline-block;
+      background-color: rgba(58, 38, 22, 0.7);
+      border-radius: 8px;
+      transition: background-color 0.3s, transform 0.3s;
     }
-
-    .separator { height: 8px; background-image: linear-gradient(to right, #3a2616, #7b5b3e, #3a2616); }
-
+    nav a:hover {
+      background-color: rgba(242, 209, 61, 0.9);
+      color: #2e1d12;
+      transform: scale(1.1);
+    }
+    .separator {
+      height: 8px;
+      background-color: #4e3620;
+      background-image: linear-gradient(to right, #3a2616, #7b5b3e, #3a2616);
+      border-top: 2px solid #1e1307;
+      border-bottom: 2px solid #1e1307;
+    }
     .keretes-szekcio {
       background-color: rgba(255, 248, 220, 0.88);
-      padding: 40px; margin: 40px auto; max-width: 900px;
-      border-radius: 12px; border: 2px solid #7b5b3e;
-    }
-
-    #map {
-      height: 500px;
-      width: 100%;
-      filter: sepia(0.6) contrast(1.1) brightness(0.95);
+      padding: 40px;
+      margin: 40px auto;
+      max-width: 800px;
       border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      border: 2px solid #7b5b3e;
     }
 
-    footer { text-align: center; padding: 20px; background-color: #3a2616; color: white; }
+    #bemutatkozas {
+      font-family: 'IM Fell English SC', serif;
+      color: #4b1e1e;
+      line-height: 1.8;
+    }
+    #bemutatkozas p {
+      font-family: 'Crimson Pro', serif;
+      color: #532d1e;
+    }
+    #bemutatkozas ul li {
+      font-family: 'Cinzel Decorative', serif;
+      color: #7a3d0e;
+      font-weight: bold;
+    }
+    #bemutatkozas strong {
+      color: #a65c00;
+      font-family: 'Cinzel Decorative', serif;
+    }
+    #bemutatkozas p:first-of-type::first-letter {
+      font-size: 2.8em;
+      float: left;
+      color: #8b1c13;
+      padding-right: 6px;
+      font-weight: bold;
+      font-family: 'Cinzel Decorative', serif;
+    }
+
+    #kapcsolat {
+      font-family: 'Crimson Pro', serif;
+      color: #3d1f10;
+    }
+    #kapcsolat strong {
+      font-family: 'Cinzel Decorative', serif;
+      color: #7a3d0e;
+      font-size: 1.2em;
+    }
+    #kapcsolat a {
+      color: #6c2f0d;
+      text-decoration: none;
+    }
+    #kapcsolat a:hover {
+      text-decoration: underline;
+    }
+
+    .gallery {
+      position: relative;
+      max-width: 800px;
+      height: 500px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+    .gallery img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .gallery img.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #3a2616;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.95em;
+      }
+      header h1 {
+        font-size: 1.8em;
+      }
+      .keretes-szekcio {
+        width: 90%;
+        padding: 5vw;
+      }
+      .gallery {
+        height: auto;
+      }
+      .gallery img {
+        height: auto;
+        aspect-ratio: 4 / 3;
+        position: relative;
+      }
+      nav {
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+      nav a {
+        flex: 1 1 auto;
+        min-width: 100px;
+        text-align: center;
+        padding: 12px 20px;
+        font-size: 1.1em;
+      }
+    }
   </style>
 </head>
 <body>
-
   <header>
-    <img src="borito.jpg" alt="Fejléc kép" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;" />
+    <img src="borito.jpg" alt="Fejléc kép" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:1;" />
     <div class="overlay">
+      <img src="logo.png" alt="Egyesület Logója" class="logo" />
       <h1>Bajvívó Lovagok Egyesülete</h1>
-      <p>Élő történelem – Lovagi tornák, bemutatók</p>
+      <p>Élő történelem – Lovagi tornák, bemutatók, élményprogramok</p>
     </div>
   </header>
 
   <div class="separator"></div>
 
-  <section class="keretes-szekcio">
-    <h2>Bemutatkozás</h2>
-    <p>...</p>
+  <nav>
+    <a href="bajvivo-lovagok/">Bajvívó Lovagok</a>
+    <a href="gyalogos-tornaviadal/">Gyalogos Tornaviadal</a>
+    <a href="kozepkori-jatekok/">Középkori Játékok</a>
+    <a href="kronika-kepekben/">Krónika Képekben</a>
+    <a href="diosdi-udvarhaz.html">Diósdi Udvarház Elérhetősége</a>
+    <a href="barataink.html">Bajvívó Barátaink</a>
+  </nav>
+
+  <div class="separator"></div>
+
+  <section id="bemutatkozas" class="keretes-szekcio">
+    <h2><a href="bajvivo-lovagok/" style="color: inherit; text-decoration: none;">Bemutatkozás</a></h2>
+    <p>A Bajvívó Lovagok Egyesülete 1994-ben alakult azzal a céllal, hogy a középkor játékaival és azok kutatásával, bemutatásával foglalkozzon. A tornaviadalokhoz hasonló játékok - gyűrűdöfés, botvívás - a lovagi tornák kiegészítői voltak, hiszen a közembereknek, városi polgároknak a látványos bajvívásokon kívül ez volt a szórakozás és az időtöltés egyik lehetősége. Így 1995 nyarán elkezdtünk középkori harcművészettel és ezen belül a lovagi tornák gyalogos párviadalaival foglalkozni a játékok mellett. Egyesületünk céljául tűzte ki a XIII-XIV-XV. századi magyar lovagi kultúra és hagyományok kutatását.</p>
+    <ul>
+      <li>Az Árpád-házi királyok utolsó évszázada,</li>
+      <li>az Anjou Királyaink 80 éves uralkodásának időszaka,</li>
+      <li>Luxemburgi Zsigmond uralkodásának kora.</li>
+    </ul>
+    <p>Fegyvereinket, eszközeinket, a kornak megfelelő öltözékeinket magunk készítjük számtalan lovagalakos sírkő, freskó és ötvös remekmű, illetve a XIV. századi magyar heraldika igen töredékes emlékei alapján. Egyesületünk fennállása óta kutatjuk hazánk középkori emlékeit, amelyet megjelenítünk viseletünkben és középkori poggyászunkban.</p>
+    <p>Hosszú évek folyamán számtalan településen tartottunk bemutatókat, és fontos feladatunknak tekintjük, hogy Magyarország legkisebb településeire is ugyanazt az egyedülálló, gazdagon díszített táborképet vigyük el, mint nemzetközi bemutatóinkra. Számunkra igen nagy megtiszteltetés, hogy a Visegrádi Nemzetközi Palotajátékokon több mint egy évtizede jelen lehetünk, és látványvilágának kialakításában jelentős szerepet vállalhatunk.</p>
+    <p><strong>Tisztelettel: Bajvívó Lovagok Egyesülete</strong></p>
   </section>
 
-    <!-- TÉRKÉP SZEKCIÓ AZ OLDAL ALJÁN -->
   <section class="keretes-szekcio">
-    <h2>Országos jelenlét időben</h2>
-
-    <div style="margin-bottom:20px;">
-      <strong>Év:</strong> <span id="yearValue">2026</span>
-      <input type="range" id="yearSlider" min="1992" max="2026" step="1" value="2026" style="width:100%;">
-      <small>A csúszka évéig megvalósult események láthatók.</small>
+    <h2>Videó</h2>
+    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;">
+      <iframe src="https://www.youtube.com/embed/kcgAPlE-JGE"
+              style="position:absolute;top:0;left:0;width:100%;height:100%;"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+      </iframe>
     </div>
+  </section>
 
-    <div id="map"></div>
+  <section id="galeria" class="keretes-szekcio">
+    <h2><a href="kronika-kepekben/" style="color: inherit; text-decoration: none;">Galéria</a></h2>
+    <div class="gallery" id="kronika-gallery">
+      <!-- Krónika képek dinamikusan -->
+    </div>
+  </section>
+
+  <section id="kapcsolat" class="keretes-szekcio">
+    <h2><a href="diosdi-udvarhaz.html" style="color: inherit; text-decoration: none;">Kapcsolat</a></h2>
+    <p><strong>Erdélyi Gábor</strong><br>
+    2049 Diósd Pf. 83<br>
+    Telefon: +36 20 923 0170<br>
+    Email: <a href="mailto:bajvivok@t-online.hu">bajvivok@t-online.hu</a></p>
   </section>
 
   <footer>
     <p>&copy; 2025 Bajvívó Lovagok Egyesülete</p>
   </footer>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map', { zoomControl: true }).setView([47.1625, 19.5033], 7);
+    const galleryDiv = document.getElementById('kronika-gallery');
+    const imagePaths = [];
+    const currentYear = new Date().getFullYear();
+    const totalImages = [];
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap közreműködők'
-    }).addTo(map);
-
-    const fleurDeLisIcon = L.divIcon({
-      html: '<div style="font-size:24px; line-height:24px;">⚜️</div>',
-      className: '',
-      iconSize: [24, 24],
-      iconAnchor: [12, 24]
-    });
-
-    const events = [
-      { name: 'Diósd', lat: 47.3847, lng: 18.9448, description: 'Diósdi programok 1997 óta', year: 1997 },
-      { name: 'Gutorfölde', lat: 46.6425, lng: 16.7366, description: 'Gutorföldi nyár 1997 óta', year: 1997 },
-      { name: 'Visegrád', lat: 47.7868, lng: 18.9738, description: 'Visegrádi Palotajátékok 1997 óta', year: 1997 },
-      { name: 'Lanciano', lat: 42.2263, lng: 14.3958, description: 'Mastrogiurato di Lanciano', year: 2001 },
-      { name: 'Alsbach-Hähnlein', lat: 49.7401, lng: 8.6253, description: 'Diósdi delegáció tagjaként', year: 2012 },
-      { name: 'Alsónémedi', lat: 47.3181, lng: 19.1667, description: 'Alsónémedi Majális', year: 2024 },
-      { name: 'Alsószentiván', lat: 47.1500, lng: 19.0655, description: 'Szent Iván-éj', year: 2016 },
-      { name: 'Balatonberény', lat: 46.7075, lng: 17.3208, description: 'Balatoberényi szezonnyitó', year: 2015 },
-      { name: 'Balatonszepezd', lat: 46.8507, lng: 17.6584, description: 'Balatonszepezdi évadnyitó', year: 2024 },
-      { name: 'Békásmegyer', lat: 47.5642, lng: 19.0242, description: 'Városnap', year: 2009 },
-      { name: 'Boldva', lat: 48.2175, lng: 20.7890, description: 'Aludttej fesztivál', year: 2025 },
-      { name: 'Cieszanów', lat: 50.2456, lng: 23.1316, description: 'Diósdi delegáció tagjaként', year: 2019 },
-      { name: 'Csesznek', lat: 47.3292, lng: 17.6905, description: 'Cseszneki várjátékok', year: 2011 },
-      { name: 'Decs', lat: 46.3442, lng: 18.7131, description: 'Falunap', year: 2024 },
-      { name: 'Dióskál', lat: 46.6667, lng: 17.0500, description: 'Falunap', year: 2019 },
-      { name: 'Érd', lat: 47.3989, lng: 18.9073, description: 'Városnap', year: 2003 },
-      { name: 'Győr', lat: 47.6870, lng: 17.6500, description: 'Szent László-napok', year: 2014 },
-      { name: 'Gyula', lat: 46.6430, lng: 21.2775, description: 'Gyulai várjátékok', year: 1997 },
-      { name: 'Halásztelek', lat: 47.3530, lng: 19.1225, description: 'Szent László-napok', year: 2022 },
-      { name: 'Hatvan', lat: 47.6664, lng: 19.6831, description: 'Városnap', year: 2013 },
-      { name: 'Imrehegy', lat: 47.1522, lng: 19.3344, description: 'Falunap', year: 2012 },
-      { name: 'Jászberény', lat: 47.5000, lng: 19.9197, description: 'Városnap', year: 2008 },
-      { name: 'Kétpó', lat: 47.0739, lng: 20.4811, description: 'Betyárétel Főző Fesztivál', year: 2016 },
-      { name: 'Kóny', lat: 47.6289, lng: 17.3628, description: 'VI. Kónyi Bikafesztivál és Majális', year: 2015 },
-      { name: 'Lakitelek', lat: 46.9952, lng: 19.0415, description: 'Falunap', year: 2024 },
-      { name: 'Nagymegyer', lat: 47.8565, lng: 17.7694, description: 'Falunap', year: 2024 },
-      { name: 'Mezőszentgyörgy', lat: 46.5744, lng: 18.1883, description: 'Pünkösdi királyválasztás', year: 2022 },
-      { name: 'Monor', lat: 47.3513, lng: 19.4473, description: 'Új-kenyér fesztivál', year: 2014 },
-      { name: 'Paks', lat: 46.6303, lng: 18.8703, description: 'Városnapok', year: 2008 },
-      { name: 'Pannonhalma', lat: 47.6330, lng: 18.9330, description: 'Pannonhalmi bornap', year: 2018 },
-      { name: 'Pilisborosjenő', lat: 47.5575, lng: 18.8000, description: 'Futanet túranap', year: 2009 },
-      { name: 'Ráckeve', lat: 47.1497, lng: 19.1747, description: 'János Vitéz napok', year: 2023 },
-      { name: 'Révkomárom', lat: 47.7606, lng: 18.2500, description: 'Városnap', year: 2000 },
-      { name: 'Sükösd', lat: 46.9964, lng: 19.1572, description: 'Falunap', year: 2023 },
-      { name: 'Sóskút', lat: 46.9964, lng: 19.1572, description: 'Sóskúti gyereknap', year: 2019 },
-      { name: 'Szabacs', lat: 47.1992, lng: 18.2083, description: 'Falunap', year: 2018 },
-      { name: 'Szigethalom', lat: 47.3503, lng: 19.0550, description: 'Falunap', year: 1992 },
-      { name: 'Szigliget', lat: 46.8018, lng: 17.4332, description: 'Szigligeti várjátékok', year: 2008 },
-      { name: 'Tar', lat: 47.0997, lng: 18.1825, description: 'Falunap', year: 2023 },
-      { name: 'Telki', lat: 47.5575, lng: 18.8000, description: 'Falunap', year: 2002 },
-      { name: 'Tiboldaróc', lat: 48.1910, lng: 20.8635, description: 'Falunap', year: 2008 },
-      { name: 'Tura', lat: 47.6077, lng: 19.6004, description: 'Települési rendezvény', year: 2023 },
-      { name: 'Üröm', lat: 47.6499, lng: 18.9329, description: 'Lőcsfesztivál', year: 2008 },
-      { name: 'Vác', lat: 47.7806, lng: 19.1331, description: 'Városnap', year: 2008 },
-      { name: 'Vereb', lat: 47.3187, lng: 18.6180, description: 'Vereb Vitéz napja', year: 2015 },
-      { name: 'Veszprém', lat: 47.0936, lng: 17.9092, description: 'Gizella-napok', year: 2010 },
-      { name: 'Veszprémgalsa', lat: 47.1000, lng: 17.7333, description: 'Falunap', year: 2022 }
-    ];
-
-    const markers = [];
-    events.forEach(ev => {
-      const marker = L.marker([ev.lat, ev.lng], { icon: fleurDeLisIcon })
-        .bindPopup(`<strong>${ev.name}</strong><br>${ev.description}<br><em>${ev.year}</em>`);
-      markers.push({ marker, year: ev.year });
-    });
-
-    function updateMarkers(year) {
-      markers.forEach(m => {
-        if (m.year <= year) {
-          if (!map.hasLayer(m.marker)) m.marker.addTo(map);
-        } else {
-          if (map.hasLayer(m.marker)) map.removeLayer(m.marker);
-        }
-      });
+    for (let year = 1997; year <= currentYear; year++) {
+      for (let i = 1; i <= 99; i++) {
+        totalImages.push({ path: `kronika-kepekben/images/${year}_${i}.jpg`, alt: `${year} kép ${i}` });
+      }
     }
 
-    const slider = document.getElementById('yearSlider');
-    const yearValue = document.getElementById('yearValue');
+    // Véletlenszerű sorrend
+    for (let i = totalImages.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [totalImages[i], totalImages[j]] = [totalImages[j], totalImages[i]];
+    }
 
-    slider.addEventListener('input', () => {
-      const year = parseInt(slider.value);
-      yearValue.textContent = year;
-      updateMarkers(year);
+    totalImages.forEach(({ path, alt }) => {
+      const img = new Image();
+      img.src = path;
+      img.alt = alt;
+      img.onload = () => {
+        img.classList.add('fade-image');
+        galleryDiv.appendChild(img);
+        if (imagePaths.length === 0) {
+          img.classList.add('active');
+        }
+        imagePaths.push(img);
+      };
+      img.onerror = () => null;
     });
 
-    updateMarkers(parseInt(slider.value));
-  </script>
-  <script>
-    const map = L.map('map').setView([47.1625, 19.5033], 7);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap közreműködők'
-    }).addTo(map);
-
-    const fleurDeLisIcon = L.divIcon({
-      html: '<div style="font-size:24px;">⚜️</div>',
-      className: '',
-      iconSize: [24, 24],
-      iconAnchor: [12, 24]
-    });
-
-    const events = [
-      { name: 'Diósd', lat: 47.3847, lng: 18.9448, year: 1997 },
-      { name: 'Visegrád', lat: 47.7868, lng: 18.9738, year: 1997 },
-      { name: 'Gyula', lat: 46.6430, lng: 21.2775, year: 1997 }
-    ];
-
-    events.forEach(ev => {
-      L.marker([ev.lat, ev.lng], { icon: fleurDeLisIcon })
-        .addTo(map)
-        .bindPopup(`<strong>${ev.name}</strong><br>${ev.year}`);
-    });
+    let current = 0;
+    setInterval(() => {
+      if (imagePaths.length < 2) return;
+      imagePaths[current].classList.remove('active');
+      current = (current + 1) % imagePaths.length;
+      imagePaths[current].classList.add('active');
+    }, 5000);
   </script>
 </body>
+
 </html>
