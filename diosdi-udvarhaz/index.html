@@ -105,15 +105,39 @@ nav a:hover {
   margin-bottom: 8px;
 }
 
-#map {
-  height: 480px;
+#mapContainer {
   width: 75%;
-  margin: 40px auto 10px auto;
+  height: 480px;
+  margin: 20px auto;
   border-radius: 14px;
   border: 4px double #5e1c13;
-  background: #efe3c6;
   box-shadow: inset 0 0 20px rgba(58,38,22,.45);
+  transition: all 0.5s ease;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  background: #efe3c6;
   filter: sepia(0.7) contrast(1.1);
+}
+
+#fullscreenBtn {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1em;
+  background: rgba(58,38,22,0.7);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#fullscreenBtn:hover {
+  background: rgba(242,209,61,0.9);
+  color: #2e1d12;
 }
 
 #yearSlider {
@@ -130,7 +154,7 @@ nav a:hover {
 
 @media (max-width: 900px) {
   .video-gallery { grid-template-columns: 1fr; }
-  #map { width: 95%; }
+  #mapContainer { width: 95%; }
   .header-image-left,.header-image-right { display:none; }
 }
 </style>
@@ -156,17 +180,20 @@ nav a:hover {
 <div class="separator"></div>
 
 <section class="video-gallery">
-<div><div class="video-title">Egykezes kard</div><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/VIDEO1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
-<div><div class="video-title">Pajzs és balta</div><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/VIDEO2" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
-<div><div class="video-title">Kézitusák</div><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/VIDEO3" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
-<div><div class="video-title">Láncos buzogány</div><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/VIDEO4" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
-<div><div class="video-title">Pajzsfal</div><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/VIDEO5" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
-<div><div class="video-title">Lovagi viadal</div><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/VIDEO6" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
+<div><div class="video-title">Dömötör nap 2025</div><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/1YLEJ7whL1c" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+<div><div class="video-title">Cserszegtomaj Szent István nap 2021</div><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/1nmsbJz_sWg" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+<div><div class="video-title">Gyöngyöshalász falunap 2017</div><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/tL5hc02Q_IA?start=7" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+<div><div class="video-title">Győri Szent László napok 2014</div><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/qmh7RYeMZx4?start=23" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+<div><div class="video-title">Nógrádi Várjátékok 2014</div><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/XHzJnZYSHD4?start=18" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+<div><div class="video-title">HírTV 2003</div><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/s4FJL6G1MNE?start=12" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </section>
 
 <div class="separator"></div>
 
-<div id="map"></div>
+<button id="fullscreenBtn">Térkép nagyítása</button>
+<div id="mapContainer">
+  <div id="map"></div>
+</div>
 <input type="range" id="yearSlider" min="1997" max="2026" value="1997" />
 <div id="yearValue">1997</div>
 
@@ -174,65 +201,119 @@ nav a:hover {
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded',()=>{
- const map=L.map('map').setView([47.2,19.3],7);
- L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
- const icon=L.divIcon({html:'⚜️',iconSize:[24,24],className:''});
- const events = [
-  { name: 'Diósd', lat: 47.3847, lng: 18.9448, description: 'Diósdi programok 1997 óta', year: 1997 },
-  { name: 'Gutorfölde', lat: 46.6425, lng: 16.7366, description: 'Gutorföldi nyár 1997 óta', year: 1997 },
-  { name: 'Visegrád', lat: 47.7868, lng: 18.9738, description: 'Visegrádi Palotajátékok 1997 óta', year: 1997 },
-  { name: 'Lanciano', lat: 42.2263, lng: 14.3958, description: 'Mastrogiurato di Lanciano', year: 2001 },
-  { name: 'Alsbach-Hähnlein', lat: 49.7401, lng: 8.6253, description: 'Diósdi delegáció tagjaként', year: 2012 },
-  { name: 'Alsónémedi', lat: 47.3181, lng: 19.1667, description: 'Alsónémedi Majális', year: 2024 },
-  { name: 'Alsószentiván', lat: 47.15, lng: 19.0655, description: 'Szent Iván-éj', year: 2016 },
-  { name: 'Balatonberény', lat: 46.7075, lng: 17.3208, description: 'Balatonberényi szezonnyitó', year: 2015 },
-  { name: 'Balatonszepezd', lat: 46.8507, lng: 17.6584, description: 'Balatonszepezdi évadnyitó', year: 2024 },
-  { name: 'Békásmegyer', lat: 47.5642, lng: 19.0242, description: 'Városnap', year: 2009 },
-  { name: 'Boldva', lat: 48.2175, lng: 20.789, description: 'Aludttej fesztivál', year: 2025 },
-  { name: 'Cieszanów', lat: 50.2456, lng: 23.1316, description: 'Diósdi delegáció tagjaként', year: 2019 },
-  { name: 'Csesznek', lat: 47.3292, lng: 17.6905, description: 'Cseszneki várjátékok', year: 2011 },
-  { name: 'Decs', lat: 46.3442, lng: 18.7131, description: 'Falunap', year: 2024 },
-  { name: 'Dióskál', lat: 46.6667, lng: 17.05, description: 'Falunap', year: 2019 },
-  { name: 'Érd', lat: 47.3989, lng: 18.9073, description: 'Városnap', year: 2003 },
-  { name: 'Győr', lat: 47.687, lng: 17.65, description: 'Szent László-napok', year: 2014 },
-  { name: 'Gyula', lat: 46.643, lng: 21.2775, description: 'Gyulai várjátékok', year: 1997 },
-  { name: 'Halásztelek', lat: 47.353, lng: 19.1225, description: 'Szent László-napok', year: 2022 },
-  { name: 'Hatvan', lat: 47.6664, lng: 19.6831, description: 'Városnap', year: 2013 },
-  { name: 'Imrehegy', lat: 47.1522, lng: 19.3344, description: 'Falunap', year: 2012 },
-  { name: 'Jászberény', lat: 47.5, lng: 19.9197, description: 'Városnap', year: 2008 },
-  { name: 'Kétpó', lat: 47.0739, lng: 20.4811, description: 'Betyárétel Főző Fesztivál', year: 2016 },
-  { name: 'Kóny', lat: 47.6289, lng: 17.3628, description: 'VI. Kónyi Bikafesztivál és Majális', year: 2015 },
-  { name: 'Lakitelek', lat: 46.9952, lng: 19.0415, description: 'Falunap', year: 2024 },
-  { name: 'Nagymegyer', lat: 47.8565, lng: 17.7694, description: 'Falunap', year: 2024 },
-  { name: 'Mezőszentgyörgy', lat: 46.5744, lng: 18.1883, description: 'Pünkösdi királyválasztás', year: 2022 },
-  { name: 'Monor', lat: 47.3513, lng: 19.4473, description: 'Új-kenyér fesztivál', year: 2014 },
-  { name: 'Paks', lat: 46.6303, lng: 18.8703, description: 'Városnapok', year: 2008 },
-  { name: 'Pannonhalma', lat: 47.633, lng: 18.933, description: 'Pannonhalmi bornap', year: 2018 },
-  { name: 'Pilisborosjenő', lat: 47.633, lng: 18.933, description: 'Futanet túranap', year: 2009 },
-  { name: 'Ráckeve', lat: 47.1497, lng: 19.1747, description: 'János Vitéz napok', year: 2023 },
-  { name: 'Révkomárom', lat: 47.7606, lng: 18.25, description: 'Városnap', year: 2000 },
-  { name: 'Sükösd', lat: 46.9964, lng: 19.1572, description: 'Falunap', year: 2023 },
-  { name: 'Sóskút', lat: 46.9964, lng: 19.1572, description: 'Sóskúti gyereknap', year: 2019 },
-  { name: 'Szabacs', lat: 47.1992, lng: 18.2083, description: 'Falunap', year: 2018 },
-  { name: 'Szigethalom', lat: 47.3503, lng: 19.055, description: 'Falunap', year: 1992 },
-  { name: 'Szigliget', lat: 46.8018, lng: 17.4332, description: 'Szigligeti várjátékok', year: 2008 },
-  { name: 'Tar', lat: 47.0997, lng: 18.1825, description: 'Falunap', year: 2023 },
-  { name: 'Telki', lat: 47.5575, lng: 18.8, description: 'Falunap', year: 2002 },
-  { name: 'Tiboldaróc', lat: 48.191, lng: 20.8635, description: 'Falunap', year: 2008 },
-  { name: 'Tura', lat: 47.6077, lng: 19.6004, description: 'Falunap', year: 2023 },
-  { name: 'Üröm', lat: 47.6499, lng: 18.9329, description: 'Lőcsfesztivál', year: 2008 },
-  { name: 'Vác', lat: 47.7806, lng: 19.1331, description: 'Városnap', year: 2008 },
-  { name: 'Vereb', lat: 47.3187, lng: 18.618, description: 'Vereb Vitéz napja', year: 2015 },
-  { name: 'Veszprém', lat: 47.0936, lng: 17.9092, description: 'Gizella-napok', year: 2010 },
-  { name: 'Veszprémgalsa', lat: 47.1, lng: 17.7333, description: 'Falunap', year: 2022 }
-];
- const markers=events.map(e=>({y:e.year,m:L.marker([e.lat,e.lng],{icon}).bindPopup(`<b>${e.name}</b><br>${e.description}`)}));
- const upd=y=>markers.forEach(o=>y>=o.y?o.m.addTo(map):map.removeLayer(o.m));
- const s=document.getElementById('yearSlider');
- const v=document.getElementById('yearValue');
- s.oninput=()=>{v.textContent=s.value;upd(+s.value)};
- upd(+s.value);
+document.addEventListener('DOMContentLoaded', ()=>{
+  const map = L.map('map').setView([47.2,19.3],7);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+  const icon = L.divIcon({html:'⚜️',iconSize:[24,24],className:''});
+
+  const events = [
+    { name: 'Diósd', lat: 47.3847, lng: 18.9448, description: 'Diósdi programok 1997 óta', year: 1997 },
+    { name: 'Gutorfölde', lat: 46.6425, lng: 16.7366, description: 'Gutorföldi nyár 1997 óta', year: 1997 },
+    { name: 'Visegrád', lat: 47.7868, lng: 18.9738, description: 'Visegrádi Palotajátékok 1997 óta', year: 1997 },
+    { name: 'Lanciano', lat: 42.2263, lng: 14.3958, description: 'Mastrogiurato di Lanciano', year: 2001 },
+    { name: 'Alsbach-Hähnlein', lat: 49.7401, lng: 8.6253, description: 'Diósdi delegáció tagjaként', year: 2012 },
+    { name: 'Albertfalva', lat: 47.4412, lng: 19.0335, description: 'Valami', year: 2004 },
+    { name: 'Alsónémedi', lat: 47.3181, lng: 19.1667, description: 'Alsónémedi Majális', year: 2024 },
+    { name: 'Alsószentiván', lat: 47.15, lng: 19.0655, description: 'Szent Iván-éj', year: 2016 },
+    { name: 'Bábolna', lat: 47.6428, lng: 17.9786, description: 'XVI. Kukorica fesztivál', year: 2014 },
+    { name: 'Bag', lat: 47.6357, lng: 19.4837, description: 'Falunap és Rétesfesztivál', year: 2019 },
+    { name: 'Balatonberény', lat: 46.7075, lng: 17.3208, description: 'Balatonberényi szezonnyitó', year: 2015 },
+    { name: 'Balatonszepezd', lat: 46.8507, lng: 17.6584, description: 'Balatonszepezdi évadnyitó', year: 2024 },
+    { name: 'Békásmegyer', lat: 47.5642, lng: 19.0242, description: 'Városnap', year: 2009 },
+    { name: 'Boldogkőváralja', lat: 48.3380, lng: 21.2358, description: 'Boldogkő', year: 2003 },
+    { name: 'Boldva', lat: 48.2175, lng: 20.7890, description: 'Aludttej fesztivál', year: 2025 },
+    { name: 'Budaörs', lat: 47.4607, lng: 18.9580, description: 'Családi nap', year: 2016 },
+    { name: 'Cieszanów', lat: 50.2456, lng: 23.1316, description: 'Diósdi delegáció tagjaként', year: 2019 },
+    { name: 'Cserszegtomaj', lat: 46.8061, lng: 17.2312, description: 'Szent István napi ünnepség', year: 2020 },
+    { name: 'Csesznek', lat: 47.3292, lng: 17.6905, description: 'Cseszneki várjátékok', year: 2011 },
+    { name: 'Decs', lat: 46.3442, lng: 18.7131, description: 'Falunap', year: 2024 },
+    { name: 'Deszk', lat: 46.2167, lng: 20.2500, description: 'Falunap', year: 2003 },
+    { name: 'Dióskál', lat: 46.6667, lng: 17.05, description: 'Falunap', year: 2019 },
+    { name: 'Écs', lat: 47.5580, lng: 17.7053, description: 'Falunap', year: 2024 },
+    { name: 'Érd', lat: 47.3989, lng: 18.9073, description: 'Városnap', year: 2003 },
+    { name: 'Felsőlajos', lat: 47.0630, lng: 19.4962, description: 'Falunap', year: 2014 },
+    { name: 'Győr', lat: 47.687, lng: 17.65, description: 'Szent László-napok', year: 2014 },
+    { name: 'Gyenesdiás', lat: 46.7707, lng: 17.2930, description: 'Festetics vágta', year: 2013 },
+    { name: 'Gyula', lat: 46.6430, lng: 21.2775, description: 'Gyulai várjátékok', year: 1997 },
+    { name: 'Halásztelek', lat: 47.353, lng: 19.1225, description: 'Szent László-napok', year: 2022 },
+    { name: 'Hatvan', lat: 47.6664, lng: 19.6831, description: 'Városnap', year: 2013 },
+    { name: 'Héhalom', lat: 47.7787, lng: 19.5878, description: 'Falunap', year: 2010 },
+    { name: 'Imrehegy', lat: 47.1522, lng: 19.3344, description: 'Falunap', year: 2012 },
+    { name: 'Jászberény', lat: 47.5000, lng: 19.9197, description: 'Városnap', year: 2008 },
+    { name: 'Kétpó', lat: 47.0739, lng: 20.4811, description: 'Betyárétel Főző Fesztivál', year: 2016 },
+    { name: 'Kisvárda', lat: 48.2167, lng: 22.0833, description: 'Városnapok', year: 2022 },
+    { name: 'Kőbánya', lat: 47.5008, lng: 19.1689, description: 'III. Királyfeszt', year: 2025 },
+    { name: 'Kóny', lat: 47.6289, lng: 17.3628, description: 'VI. Kónyi Bikafesztivál és Majális', year: 2015 },
+    { name: 'Lakitelek', lat: 46.9952, lng: 19.0415, description: 'Falunap', year: 2024 },
+    { name: 'Mezőberény', lat: 46.8167, lng: 21.0167, description: 'Nyári karnevál', year: 1999 },
+    { name: 'Mezőszentgyörgy', lat: 46.5744, lng: 18.1883, description: 'Pünkösdi királyválasztás', year: 2022 },
+    { name: 'Monor', lat: 47.3513, lng: 19.4473, description: 'Új-kenyér fesztivál', year: 2014 },
+    { name: 'Nagymegyer', lat: 47.8565, lng: 17.7694, description: 'Falunap', year: 2024 },
+    { name: 'Nógrád', lat: 47.9048, lng: 19.0516, description: 'Nógrádi várjátékok', year: 2014 },
+    { name: 'Ócsa', lat: 47.2934, lng: 19.2260, description: 'Városi vígasság', year: 2012 },
+    { name: 'Paks', lat: 46.6303, lng: 18.8703, description: 'Városnapok', year: 2008 },
+    { name: 'Pannonhalma', lat: 47.633, lng: 18.933, description: 'Pannonhalmi bornap', year: 2018 },
+    { name: 'Pilisborosjenő', lat: 47.633, lng: 18.933, description: 'Futanet túranap', year: 2009 },
+    { name: 'Ráckeve', lat: 47.1497, lng: 19.1747, description: 'János Vitéz napok', year: 2023 },
+    { name: 'Regéc', lat: 48.4000, lng: 21.3500, description: 'Falunap', year: 2003 },
+    { name: 'Révkomárom', lat: 47.7606, lng: 18.2500, description: 'Városnap', year: 2000 },
+    { name: 'Sárhida', lat: 46.7500, lng: 16.8500, description: 'Családi nap', year: 2010 },
+    { name: 'Simontornya', lat: 46.7541, lng: 18.5475, description: 'Családi nap', year: 2009 },
+    { name: 'Sopron', lat: 47.6849, lng: 16.5831, description: 'I. Nemzetközi Csodabogár Fesztivál', year: 1999 },
+    { name: 'Sükösd', lat: 46.9964, lng: 19.1572, description: 'Falunap', year: 2023 },
+    { name: 'Sóskút', lat: 46.9964, lng: 19.1572, description: 'Sóskúti gyereknap', year: 2019 },
+    { name: 'Szabacs', lat: 47.1992, lng: 18.2083, description: 'Falunap', year: 2018 },
+    { name: 'Szigethalom', lat: 47.3503, lng: 19.055, description: 'Falunap', year: 1992 },
+    { name: 'Szigliget', lat: 46.8018, lng: 17.4332, description: 'Szigligeti várjátékok', year: 2008 },
+    { name: 'Szombathely', lat: 47.2351, lng: 16.6219, description: 'Savaria karnevál', year: 2002 },
+    { name: 'Tatabánya', lat: 47.5862, lng: 18.3949, description: 'Városnap', year: 2004 },
+    { name: 'Tar', lat: 47.0997, lng: 18.1825, description: 'Falunap', year: 2023 },
+    { name: 'Telki', lat: 47.5575, lng: 18.8, description: 'Falunap', year: 2002 },
+    { name: 'Tiboldaróc', lat: 48.191, lng: 20.8635, description: 'Falunap', year: 2008 },
+    { name: 'Tura', lat: 47.6077, lng: 19.6004, description: 'Falunap', year: 2023 },
+    { name: 'Üröm', lat: 47.6499, lng: 18.9329, description: 'Lőcsfesztivál', year: 2008 },
+    { name: 'Vác', lat: 47.7806, lng: 19.1331, description: 'Városnap', year: 2008 },
+    { name: 'Vereb', lat: 47.3187, lng: 18.618, description: 'Vereb Vitéz napja', year: 2015 },
+    { name: 'Veszprém', lat: 47.0936, lng: 17.9092, description: 'Gizella-napok', year: 2010 },
+    { name: 'Veszprémgalsa', lat: 47.1000, lng: 17.7333, description: 'Falunap', year: 2022 },
+    { name: 'Zagyvaszántó', lat: 47.7730, lng: 19.6680, description: 'Falunap', year: 2024 },
+    { name: 'Zsámbék', lat: 47.5483, lng: 18.7186, description: '32. Csillagerdei Gyermeknapi Majális', year: 2013 }
+  ];
+
+  const markers = events.map(ev=>L.marker([ev.lat,ev.lng],{icon:icon}).bindPopup(`<b>${ev.name}</b><br>${ev.description}<br>${ev.year}`));
+  markers.forEach(m=>m.addTo(map));
+
+  const yearSlider = document.getElementById('yearSlider');
+  const yearValue = document.getElementById('yearValue');
+
+  function filterByYear(y){
+    markers.forEach((m,i)=>{
+      if(events[i].year<=y) m.addTo(map);
+      else map.removeLayer(m);
+    });
+    yearValue.textContent = y;
+  }
+
+  yearSlider.addEventListener('input', e=>filterByYear(e.target.value));
+  filterByYear(yearSlider.value);
+
+  const mapContainer = document.getElementById('mapContainer');
+  const fsBtn = document.getElementById('fullscreenBtn');
+  let enlarged = false;
+
+  fsBtn.addEventListener('click', ()=>{
+    if(!enlarged){
+      mapContainer.style.width='95%';
+      mapContainer.style.height='700px';
+      enlarged = true;
+    } else {
+      mapContainer.style.width='75%';
+      mapContainer.style.height='480px';
+      enlarged = false;
+    }
+    map.invalidateSize();
+  });
 });
 </script>
 </body>
