@@ -210,6 +210,7 @@
     <a href="diosdi-udvarhaz.html">Diósdi Udvarház</a>
   </nav>
   <div class="separator"></div>
+
   <div class="year-scroll" id="year-nav">
     <script>
       for (let year = 1997; year <= new Date().getFullYear(); year++) {
@@ -217,36 +218,63 @@
       }
     </script>
   </div>
+
   <main>
     <script>
+      function imgTag(year, i, height = 150) {
+        const jpg = `images/${year}_${i}.jpg`;
+        const JPG = `images/${year}_${i}.JPG`;
+        return `
+          <a href="${jpg}" class="glightbox" data-gallery="year-${year}">
+            <img src="${jpg}" alt="${year} kép ${i}" height="${height}"
+                 onerror="this.onerror=null; this.src='${JPG}'; if(this.src.endsWith('.JPG') && this.naturalWidth===0){this.style.display='none';}">
+          </a>`;
+      }
+
       for (let year = 1997; year <= new Date().getFullYear(); year++) {
         document.write(`
           <section class="year-preview" id="ev-${year}">
             <h3>${year}</h3>
             <div class="preview-images">
-              <a href="images/${year}_1.jpg" class="glightbox" data-gallery="year-${year}"><img src="images/${year}_1.jpg" alt="${year} kép 1"></a>
-              <a href="images/${year}_2.jpg" class="glightbox" data-gallery="year-${year}"><img src="images/${year}_2.jpg" alt="${year} kép 2"></a>
-              <a href="images/${year}_3.jpg" class="glightbox" data-gallery="year-${year}"><img src="images/${year}_3.jpg" alt="${year} kép 3"></a>
+              ${imgTag(year,1)}
+              ${imgTag(year,2)}
+              ${imgTag(year,3)}
             </div>
           </section>
         `);
       }
     </script>
-    <a href="#full-gallery" class="toggle-button" onclick="document.querySelector('.full-gallery').style.display = 'block'; setTimeout(() => { location.hash = 'full-gallery'; }, 0); this.style.display='none'; return false;">Teljes galéria megtekintése</a>
+
+    <a href="#full-gallery" class="toggle-button"
+       onclick="document.querySelector('.full-gallery').style.display = 'block'; setTimeout(() => { location.hash = 'full-gallery'; }, 0); this.style.display='none'; return false;">
+       Teljes galéria megtekintése
+    </a>
+
     <div class="full-gallery" id="full-gallery">
       <script>
+        function fullImg(year, i) {
+          const jpg = `images/${year}_${i}.jpg`;
+          const JPG = `images/${year}_${i}.JPG`;
+          return `
+            <a href="${jpg}" class="glightbox" data-gallery="full-${year}">
+              <img src="${jpg}" alt="${year} teljes ${i}"
+                   onerror="this.onerror=null; this.src='${JPG}'; if(this.src.endsWith('.JPG') && this.naturalWidth===0){this.style.display='none';}">
+            </a>`;
+        }
+
         for (let year = 1997; year <= new Date().getFullYear(); year++) {
           document.write(`<h3 id="full-${year}">${year}</h3><div class="horizontal-gallery">`);
           for (let i = 1; i <= 99; i++) {
-            const path = `images/${year}_${i}.jpg`;
-            document.write(`<a href="${path}" class="glightbox" data-gallery="full-${year}"><img src="${path}" alt="${year} teljes ${i}" onerror="this.style.display='none'"></a>`);
+            document.write(fullImg(year, i));
           }
           document.write(`</div>`);
         }
       </script>
     </div>
   </main>
+
   <a href="#top" id="back-to-top" title="Ugrás a tetejére">⬆</a>
+
   <script>
     const lightbox = GLightbox({ selector: '.glightbox' });
   </script>
