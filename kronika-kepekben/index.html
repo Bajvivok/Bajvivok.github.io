@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   <style>
-    /* --- EREDETI CSS VÁLTOZATLAN --- */
     body { margin:0;background:url('background_seamless_mirrored.png') repeat;background-size:contain;background-position:top left;font-family:'IM Fell English SC',serif;color:#3a2616;}
     header {position:relative;text-align:center;padding:40px 20px;background:#e8dcc2;border-bottom:3px solid #7b5b3e;}
     .header-image-left,.header-image-right{position:absolute;bottom:0;height:120px;}
@@ -97,13 +96,18 @@ for (let year = 1997; year <= new Date().getFullYear(); year++) {
 for (let year = 1997; year <= new Date().getFullYear(); year++) {
   document.write(`<h3 id="full-${year}">${year}</h3><div class="horizontal-gallery">`);
   for (let i = 1; i <= 99; i++) {
+    const lower = `images/${year}_${i}.jpg`;
+    const upper = `images/${year}_${i}.JPG`;
     document.write(`
-      <a href="images/${year}_${i}.jpg" class="glightbox" data-gallery="full-${year}">
-        <img src="images/${year}_${i}.jpg"
-             onerror="this.onerror=null;
-                      this.src='images/${year}_${i}.JPG';
-                      this.parentElement.href='images/${year}_${i}.JPG';
-                      this.style.display='none';">
+      <a href="${lower}" class="glightbox" data-gallery="full-${year}">
+        <img src="${lower}" 
+             onerror="
+               this.onerror=null;
+               fetch('${upper}', { method: 'HEAD' }).then(r => {
+                 if(r.ok){ this.src='${upper}'; this.parentElement.href='${upper}'; this.style.display='inline'; }
+                 else{ this.style.display='none'; this.parentElement.style.display='none'; }
+               }).catch(()=>{ this.style.display='none'; this.parentElement.style.display='none'; });
+             ">
       </a>
     `);
   }
