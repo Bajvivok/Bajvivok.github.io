@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   <style>
+    /* --- EREDETI CSS VÁLTOZATLAN --- */
     body { margin:0;background:url('background_seamless_mirrored.png') repeat;background-size:contain;background-position:top left;font-family:'IM Fell English SC',serif;color:#3a2616;}
     header {position:relative;text-align:center;padding:40px 20px;background:#e8dcc2;border-bottom:3px solid #7b5b3e;}
     .header-image-left,.header-image-right{position:absolute;bottom:0;height:120px;}
@@ -21,13 +22,43 @@
     .separator{height:8px;background-color:#4e3620;background-image:linear-gradient(to right,#3a2616,#7b5b3e,#3a2616);border-top:2px solid #1e1307;border-bottom:2px solid #1e1307;}
     .year-scroll{display:flex;overflow-x:auto;background-color:#3a2616;padding:10px;white-space:nowrap;justify-content:center;}
     .year-scroll a{display:inline-block;padding:8px 12px;margin-right:8px;background-color:#7b5b3e;color:white;text-decoration:none;border-radius:5px;font-size:.9em;}
+    .year-scroll a:hover{background-color:#a67c52;}
     main{padding:20px;max-width:1000px;margin:0 auto;background-color:rgba(255,248,220,.85);border-radius:12px;box-shadow:0 0 20px rgba(0,0,0,.2);}
     .preview-images{display:flex;overflow-x:auto;gap:20px;}
     .preview-images img{height:150px;border:2px solid #7b5b3e;border-radius:8px;}
-    .horizontal-gallery{display:flex;overflow-x:auto;gap:15px;}
-    .horizontal-gallery img{height:200px;border:2px solid #7b5b3e;border-radius:8px;}
+    .horizontal-gallery{display:flex;overflow-x:auto;gap:15px;padding-bottom:10px;
+        scrollbar-width: thin;
+        scrollbar-color: #7b5b3e #e8dcc2; /* barna thumb, világos track */
+    }
+    .horizontal-gallery::-webkit-scrollbar { height:10px; }
+    .horizontal-gallery::-webkit-scrollbar-track { background:#e8dcc2; border-radius:10px; }
+    .horizontal-gallery::-webkit-scrollbar-thumb { background:#7b5b3e; border-radius:10px; border:2px solid #e8dcc2; }
+    .horizontal-gallery a img{height:200px;border:2px solid #7b5b3e;border-radius:8px;}
     .toggle-button{display:block;text-align:center;margin:20px auto;padding:10px 20px;background-color:#7b5b3e;color:#fff;border-radius:8px;text-decoration:none;font-weight:bold;cursor:pointer;}
-    .toggle-button:hover{background-color:#a0784c;color:#2e1d12;}
+    .toggle-button:hover{background-color:#a67c52;color:#2e1d12;}
+    .full-gallery{display:none;margin-top:60px;}
+    .full-gallery h3{margin-top:40px;border-bottom:1px solid #ccc;padding-bottom:5px;}
+    #back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #7b5b3e;   /* barna gomb */
+        color: white;
+        padding: 10px;
+        border-radius: 50%;
+        text-decoration: none;
+        font-size: 1.5em;
+        line-height: 1;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        z-index: 9999;
+        transition: background 0.3s, transform 0.3s;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #back-to-top:hover { background:#a67c52; transform:scale(1.1); }
   </style>
 </head>
 <body id="top">
@@ -81,17 +112,12 @@ for (let year = 1997; year <= new Date().getFullYear(); year++) {
 }
 </script>
 
-<!-- TELJES GALÉRIA GOMB -->
-<a href="#full-gallery" class="toggle-button" 
-   onclick="document.querySelector('.full-gallery').style.display = 'block'; 
-            setTimeout(() => { location.hash = 'full-gallery'; }, 0); 
-            this.style.display='none'; 
-            return false;">
+<a href="#full-gallery" class="toggle-button"
+   onclick="document.querySelector('.full-gallery').style.display = 'block'; setTimeout(() => { location.hash = 'full-gallery'; }, 0); this.style.display='none'; return false;">
   Teljes galéria megtekintése
 </a>
 
-<!-- TELJES GALÉRIA REJTVE KEZD -->
-<div class="full-gallery" id="full-gallery" style="display:none;">
+<div class="full-gallery" id="full-gallery">
 <script>
 for (let year = 1997; year <= new Date().getFullYear(); year++) {
   document.write(`<h3 id="full-${year}">${year}</h3><div class="horizontal-gallery">`);
