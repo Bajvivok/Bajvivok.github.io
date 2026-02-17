@@ -8,279 +8,117 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   <style>
-    body {
-      margin: 0;
-      background: url('background_seamless_mirrored.png') repeat;
-      background-size: contain;
-      background-position: top left;
-      font-family: 'IM Fell English SC', serif;
-      color: #3a2616;
-    }
-    header {
-      position: relative;
-      text-align: center;
-      padding: 40px 20px;
-      background: #e8dcc2;
-      border-bottom: 3px solid #7b5b3e;
-    }
-    .header-image-left, .header-image-right {
-      position: absolute;
-      bottom: 0;
-      height: 120px;
-    }
-    .header-image-left { left: 0; margin-left: 10px; }
-    .header-image-right { right: 0; margin-right: 10px; }
-    header h1 {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 2.5em;
-      color: #6b2d1a;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1.1em;
-      font-family: 'Crimson Pro', serif;
-    }
-    nav {
-      background: url('anjou-liliom-minta.jpg') center center / cover no-repeat;
-      text-align: center;
-      padding: 15px;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 20px;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 10px 15px;
-      display: inline-block;
-      background-color: rgba(58, 38, 22, 0.7);
-      border-radius: 8px;
-      transition: background-color 0.3s, transform 0.3s;
-    }
-    nav a:hover {
-      background-color: rgba(242, 209, 61, 0.9);
-      color: #2e1d12;
-      transform: scale(1.1);
-    }
-    .separator {
-      height: 8px;
-      background-color: #4e3620;
-      background-image: linear-gradient(to right, #3a2616, #7b5b3e, #3a2616);
-      border-top: 2px solid #1e1307;
-      border-bottom: 2px solid #1e1307;
-    }
-    .year-scroll {
-      display: flex;
-      overflow-x: auto;
-      background-color: #3a2616;
-      padding: 10px;
-      white-space: nowrap;
-      justify-content: center;
-    }
-    .year-scroll a {
-      display: inline-block;
-      padding: 8px 12px;
-      margin-right: 8px;
-      background-color: #7b5b3e;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 0.9em;
-      transition: background-color 0.3s;
-      flex-shrink: 0;
-    }
-    .year-scroll a:hover {
-      background-color: #a67c52;
-    }
-    main {
-      padding: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-      background-color: rgba(255, 248, 220, 0.85);
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    }
-    .year-preview {
-      margin-bottom: 40px;
-    }
-    .year-preview h3 {
-      font-family: 'Cinzel Decorative', serif;
-      border-bottom: 2px solid #7b5b3e;
-      padding-bottom: 5px;
-    }
-    .preview-images {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      gap: 20px;
-      margin-top: 10px;
-    }
-    .preview-images img {
-      height: 150px;
-      flex-shrink: 0;
-      border: 2px solid #7b5b3e;
-      border-radius: 8px;
-    }
-    .toggle-button {
-      margin-top: 10px;
-      display: inline-block;
-      background-color: #7b5b3e;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 5px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .toggle-button:hover {
-      background-color: #a67c52;
-    }
-    .full-gallery {
-      display: none;
-      margin-top: 60px;
-    }
-    .full-gallery h3 {
-      margin-top: 40px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
-    }
-    .horizontal-gallery {
-      display: flex;
-      overflow-x: auto;
-      gap: 15px;
-      padding-bottom: 10px;
-      scrollbar-width: thin;
-      scrollbar-color: #7b5b3e #e8dcc2;
-    }
-    .horizontal-gallery::-webkit-scrollbar {
-      height: 10px;
-    }
-    .horizontal-gallery::-webkit-scrollbar-track {
-      background: #e8dcc2;
-      border-radius: 10px;
-    }
-    .horizontal-gallery::-webkit-scrollbar-thumb {
-      background: #7b5b3e;
-      border-radius: 10px;
-      border: 2px solid #e8dcc2;
-    }
-    .horizontal-gallery a img {
-      height: 200px;
-      flex-shrink: 0;
-      border: 2px solid #7b5b3e;
-      border-radius: 8px;
-    }
-    #back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #7b5b3e;
-      color: white;
-      padding: 10px;
-      border-radius: 50%;
-      text-decoration: none;
-      font-size: 1.5em;
-      line-height: 1;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      z-index: 9999;
-      transition: background 0.3s, transform 0.3s;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    #back-to-top:hover {
-      background: #a67c52;
-      transform: scale(1.1);
-    }
+    /* --- EREDETI CSS VÁLTOZATLAN --- */
+    body { margin:0;background:url('background_seamless_mirrored.png') repeat;background-size:contain;background-position:top left;font-family:'IM Fell English SC',serif;color:#3a2616;}
+    header {position:relative;text-align:center;padding:40px 20px;background:#e8dcc2;border-bottom:3px solid #7b5b3e;}
+    .header-image-left,.header-image-right{position:absolute;bottom:0;height:120px;}
+    .header-image-left{left:0;margin-left:10px;}
+    .header-image-right{right:0;margin-right:10px;}
+    header h1{font-family:'Cinzel Decorative',serif;font-size:2.5em;color:#6b2d1a;margin-bottom:10px;}
+    header p{font-size:1.1em;font-family:'Crimson Pro',serif;}
+    nav{background:url('anjou-liliom-minta.jpg') center center/cover no-repeat;text-align:center;padding:15px;}
+    nav a{color:#fff;margin:0 20px;text-decoration:none;font-weight:bold;padding:10px 15px;display:inline-block;background-color:rgba(58,38,22,.7);border-radius:8px;transition:.3s;}
+    nav a:hover{background-color:rgba(242,209,61,.9);color:#2e1d12;transform:scale(1.1);}
+    .separator{height:8px;background-color:#4e3620;background-image:linear-gradient(to right,#3a2616,#7b5b3e,#3a2616);border-top:2px solid #1e1307;border-bottom:2px solid #1e1307;}
+    .year-scroll{display:flex;overflow-x:auto;background-color:#3a2616;padding:10px;white-space:nowrap;justify-content:center;}
+    .year-scroll a{display:inline-block;padding:8px 12px;margin-right:8px;background-color:#7b5b3e;color:white;text-decoration:none;border-radius:5px;font-size:.9em;}
+    main{padding:20px;max-width:1000px;margin:0 auto;background-color:rgba(255,248,220,.85);border-radius:12px;box-shadow:0 0 20px rgba(0,0,0,.2);}
+    .preview-images{display:flex;overflow-x:auto;gap:20px;}
+    .preview-images img{height:150px;border:2px solid #7b5b3e;border-radius:8px;}
+    .horizontal-gallery{display:flex;overflow-x:auto;gap:15px;}
+    .horizontal-gallery img{height:200px;border:2px solid #7b5b3e;border-radius:8px;}
+    .toggle-button{display:block;text-align:center;margin:20px auto;padding:10px 20px;background-color:#7b5b3e;color:#fff;border-radius:8px;text-decoration:none;font-weight:bold;cursor:pointer;}
+    .toggle-button:hover{background-color:#a0784c;color:#2e1d12;}
   </style>
 </head>
 <body id="top">
-  <header>
-    <img src="liliom-bal.png" alt="Bal oldali dísz" class="header-image-left">
-    <img src="liliom-jobb.PNG" alt="Jobb oldali dísz" class="header-image-right">
-    <h1>Krónika Képekben</h1>
-    <p>Évszakonkénti képes visszatekintés 1997-től napjainkig</p>
-  </header>
-  <div class="separator"></div>
-  <nav>
-    <a href="https://bajvivok.github.io/">Vissza a Főoldalra</a>
-    <a href="bajvivo-lovagok/">Bajvívó Lovagok</a>
-    <a href="gyalogos-tornaviadal/">Gyalogos Tornaviadal</a>     
-    <a href="kozepkori-jatekok/">Középkori Tábor</a> 
-    <a href="diosdi-udvarhaz/">Diósdi Udvarház</a>     
-    <a href="barataink.html">Bajvívó Barátaink</a>
-  </nav>
-  <div class="separator"></div>
 
-  <div class="year-scroll" id="year-nav">
-    <script>
-      for (let year = 1997; year <= new Date().getFullYear(); year++) {
-        document.write(`<a href="#" onclick="event.preventDefault(); const gallery = document.querySelector('.full-gallery'); gallery.style.display = 'block'; setTimeout(() => { location.hash = 'full-${year}'; }, 0);">${year}</a>`);
-      }
-    </script>
-  </div>
+<header>
+  <img src="liliom-bal.png" class="header-image-left">
+  <img src="liliom-jobb.png" class="header-image-right">
+  <h1>Krónika Képekben</h1>
+  <p>Évszakonkénti képes visszatekintés 1997-től napjainkig</p>
+</header>
 
-  <main>
-    <script>
-      function imgTag(year, i, height = 150) {
-        const jpg = `images/${year}_${i}.jpg`;
-        const JPG = `images/${year}_${i}.JPG`;
-        return `
-          <a href="${jpg}" class="glightbox" data-gallery="year-${year}">
-            <img src="${jpg}" alt="${year} kép ${i}" height="${height}"
-                 onerror="this.onerror=null; this.src='${JPG}'; if(this.src.endsWith('.JPG') && this.naturalWidth===0){this.style.display='none';}">
-          </a>`;
-      }
+<div class="separator"></div>
 
-      for (let year = 1997; year <= new Date().getFullYear(); year++) {
-        document.write(`
-          <section class="year-preview" id="ev-${year}">
-            <h3>${year}</h3>
-            <div class="preview-images">
-              ${imgTag(year,1)}
-              ${imgTag(year,2)}
-              ${imgTag(year,3)}
-            </div>
-          </section>
-        `);
-      }
-    </script>
+<nav>
+  <a href="https://bajvivok.github.io/">Vissza a Főoldalra</a>
+  <a href="bajvivo-lovagok.html">Bajvívó Lovagok</a>
+  <a href="gyalogos-tornaviadal.html">Tornaviadal</a>
+  <a href="kozepkori-jatekok.html">Középkori Játékok</a>
+  <a href="diosdi-udvarhaz.html">Diósdi Udvarház</a>
+</nav>
 
-    <a href="#full-gallery" class="toggle-button"
-       onclick="document.querySelector('.full-gallery').style.display = 'block'; setTimeout(() => { location.hash = 'full-gallery'; }, 0); this.style.display='none'; return false;">
-       Teljes galéria megtekintése
-    </a>
+<div class="separator"></div>
 
-    <div class="full-gallery" id="full-gallery">
-      <script>
-        function fullImg(year, i) {
-          const jpg = `images/${year}_${i}.jpg`;
-          const JPG = `images/${year}_${i}.JPG`;
-          return `
-            <a href="${jpg}" class="glightbox" data-gallery="full-${year}">
-              <img src="${jpg}" alt="${year} teljes ${i}"
-                   onerror="this.onerror=null; this.src='${JPG}'; if(this.src.endsWith('.JPG') && this.naturalWidth===0){this.style.display='none';}">
-            </a>`;
-        }
+<div class="year-scroll">
+<script>
+for (let year = 1997; year <= new Date().getFullYear(); year++) {
+  document.write(`<a href="#full-${year}">${year}</a>`);
+}
+</script>
+</div>
 
-        for (let year = 1997; year <= new Date().getFullYear(); year++) {
-          document.write(`<h3 id="full-${year}">${year}</h3><div class="horizontal-gallery">`);
-          for (let i = 1; i <= 99; i++) {
-            document.write(fullImg(year, i));
-          }
-          document.write(`</div>`);
-        }
-      </script>
-    </div>
-  </main>
+<main>
 
-  <a href="#top" id="back-to-top" title="Ugrás a tetejére">⬆</a>
+<script>
+for (let year = 1997; year <= new Date().getFullYear(); year++) {
+  document.write(`
+    <section class="year-preview">
+      <h3>${year}</h3>
+      <div class="preview-images">
+        ${[1,2,3].map(i => `
+          <a href="images/${year}_${i}.jpg" class="glightbox" data-gallery="year-${year}">
+            <img src="images/${year}_${i}.jpg"
+                 onerror="this.onerror=null;
+                          this.src='images/${year}_${i}.JPG';
+                          this.parentElement.href='images/${year}_${i}.JPG';">
+          </a>
+        `).join('')}
+      </div>
+    </section>
+  `);
+}
+</script>
 
-  <script>
-    const lightbox = GLightbox({ selector: '.glightbox' });
-  </script>
+<!-- TELJES GALÉRIA GOMB -->
+<a href="#full-gallery" class="toggle-button" 
+   onclick="document.querySelector('.full-gallery').style.display = 'block'; 
+            setTimeout(() => { location.hash = 'full-gallery'; }, 0); 
+            this.style.display='none'; 
+            return false;">
+  Teljes galéria megtekintése
+</a>
+
+<!-- TELJES GALÉRIA REJTVE KEZD -->
+<div class="full-gallery" id="full-gallery" style="display:none;">
+<script>
+for (let year = 1997; year <= new Date().getFullYear(); year++) {
+  document.write(`<h3 id="full-${year}">${year}</h3><div class="horizontal-gallery">`);
+  for (let i = 1; i <= 99; i++) {
+    document.write(`
+      <a href="images/${year}_${i}.jpg" class="glightbox" data-gallery="full-${year}">
+        <img src="images/${year}_${i}.jpg"
+             onerror="this.onerror=null;
+                      this.src='images/${year}_${i}.JPG';
+                      this.parentElement.href='images/${year}_${i}.JPG';
+                      this.style.display='none';">
+      </a>
+    `);
+  }
+  document.write(`</div>`);
+}
+</script>
+</div>
+
+</main>
+
+<a href="#top" id="back-to-top">⬆</a>
+
+<script>
+const lightbox = GLightbox({ selector: '.glightbox' });
+</script>
+
 </body>
-
 </html>
-
-
