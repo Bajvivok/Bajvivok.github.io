@@ -268,48 +268,52 @@
     <p>&copy; 2025 Bajvívó Lovagok Egyesülete</p>
   </footer>
 
-  <script>
-    const galleryDiv = document.getElementById('kronika-gallery');
-    const imagePaths = [];
-    const currentYear = new Date().getFullYear();
-    const totalImages = [];
+<script>
+  const galleryDiv = document.getElementById('kronika-gallery');
+  const imageElements = [];
 
-    for (let year = 1997; year <= currentYear; year++) {
-      for (let i = 1; i <= 99; i++) {
-        totalImages.push({ path: `kronika-kepekben/images/${year}_${i}.jpg`, alt: `${year} kép ${i}` });
+  // 👉 ITT ADD MEG A KÉPEKET A KÍVÁNT SORRENDBEN
+  const images = [
+    { path: "kronika-kepekben/images/1997_1.jpg", alt: "1997 – első kép" },
+    { path: "kronika-kepekben/images/1998_3.jpg", alt: "1998 – esemény" },
+    { path: "kronika-kepekben/images/2001_2.jpg", alt: "2001 – találkozó" },
+    { path: "kronika-kepekben/images/2010_5.jpg", alt: "2010 – ünnepség" },
+    { path: "kronika-kepekben/images/2020_1.jpg", alt: "2020 – megemlékezés" }
+  ];
+
+  images.forEach(({ path, alt }) => {
+    const img = new Image();
+    img.src = path;
+    img.alt = alt;
+
+    img.onload = () => {
+      img.classList.add('fade-image');
+      galleryDiv.appendChild(img);
+
+      if (imageElements.length === 0) {
+        img.classList.add('active');
       }
-    }
 
-    // Véletlenszerű sorrend
-    for (let i = totalImages.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [totalImages[i], totalImages[j]] = [totalImages[j], totalImages[i]];
-    }
+      imageElements.push(img);
+    };
 
-    totalImages.forEach(({ path, alt }) => {
-      const img = new Image();
-      img.src = path;
-      img.alt = alt;
-      img.onload = () => {
-        img.classList.add('fade-image');
-        galleryDiv.appendChild(img);
-        if (imagePaths.length === 0) {
-          img.classList.add('active');
-        }
-        imagePaths.push(img);
-      };
-      img.onerror = () => null;
-    });
+    img.onerror = () => {
+      console.warn("Hiányzó kép:", path);
+    };
+  });
 
-    let current = 0;
-    setInterval(() => {
-      if (imagePaths.length < 2) return;
-      imagePaths[current].classList.remove('active');
-      current = (current + 1) % imagePaths.length;
-      imagePaths[current].classList.add('active');
-    }, 5000);
-  </script>
+  let current = 0;
+
+  setInterval(() => {
+    if (imageElements.length < 2) return;
+
+    imageElements[current].classList.remove('active');
+    current = (current + 1) % imageElements.length;
+    imageElements[current].classList.add('active');
+  }, 5000);
+</script>
 </body>
 
 </html>
+
 
