@@ -22,7 +22,7 @@
       overflow: hidden;
     }
 
-    header img {
+    header > img {
       position:absolute;
       top:0;
       left:0;
@@ -38,13 +38,17 @@
       background: rgba(0, 0, 0, 0.5);
       color: #fff;
       text-align: center;
-      padding: 30px;
+      padding: 30px 40px;
       border-radius: 10px;
+
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: fit-content;
-      max-width: 90%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;   /* ⭐ EZ KÖZÉPRE IGAZÍT */
+      justify-content: center;
     }
 
     header h1 {
@@ -62,7 +66,7 @@
       width: 80px;
       height: auto;
       display: block;
-      margin: 0 auto 15px;
+      margin: 0 auto 12px auto;
     }
 
     nav {
@@ -224,6 +228,7 @@
 
       .logo {
         width: 60px;
+        margin-bottom: 8px;
       }
 
       nav {
@@ -268,8 +273,9 @@
 
   <header>
     <img src="borito.jpg" alt="Fejléc kép">
+
     <div class="overlay">
-      <img src="logo.png" alt="Egyesület Logója" class="logo" />
+      <img src="logo.png" alt="Egyesület Logója" class="logo">
       <h1>Bajvívó Lovagok Egyesülete</h1>
       <p>Élő történelem – Lovagi tornák, bemutatók, élményprogramok</p>
     </div>
