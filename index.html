@@ -4,29 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bajvívó Lovagok Egyesülete</title>
+
   <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Cinzel+Decorative&family=Crimson+Pro&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
       font-family: 'Georgia', serif;
-      background: url('old-paper-with-torn-and-ripped-edges-900x1134.jpg') center center / cover no-repeat fixed;
+      background: url('old-paper-with-torn-and-ripped-edges-900x1134.jpg') center center / cover no-repeat;
       color: #2e1d12;
     }
+
     header {
       position: relative;
       height: 480px;
       overflow: hidden;
     }
-    header video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 1;
+
+    header img {
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:1;
     }
+
     header .overlay {
       position: absolute;
       z-index: 2;
@@ -39,27 +44,33 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: fit-content;
+      max-width: 90%;
     }
+
     header h1 {
       font-family: 'MedievalSharp', cursive;
       font-size: 2.7em;
       margin: 0;
     }
+
     header p {
       font-size: 1.3em;
       margin-top: 10px;
     }
+
     .logo {
       width: 80px;
       height: auto;
       display: block;
       margin: 0 auto 15px;
     }
+
     nav {
       background: url('anjou-liliom-minta.jpg') center center / cover no-repeat;
       text-align: center;
       padding: 15px;
     }
+
     nav a {
       color: #fff;
       margin: 0 20px;
@@ -71,11 +82,13 @@
       border-radius: 8px;
       transition: background-color 0.3s, transform 0.3s;
     }
+
     nav a:hover {
       background-color: rgba(242, 209, 61, 0.9);
       color: #2e1d12;
       transform: scale(1.1);
     }
+
     .separator {
       height: 8px;
       background-color: #4e3620;
@@ -83,6 +96,7 @@
       border-top: 2px solid #1e1307;
       border-bottom: 2px solid #1e1307;
     }
+
     .keretes-szekcio {
       background-color: rgba(255, 248, 220, 0.88);
       padding: 40px;
@@ -93,48 +107,63 @@
       border: 2px solid #7b5b3e;
     }
 
+    /* ⚔️ LOVAGI SZEKCIÓCÍM ANIMÁCIÓ */
+    .keretes-szekcio h2 {
+      position: relative;
+      transition: transform 0.25s ease, color 0.25s ease, text-shadow 0.25s ease;
+      cursor: default;
+      display: inline-block;
+    }
+
+    .keretes-szekcio h2:hover {
+      transform: scale(1.06);
+      color: #c9a33a;
+      text-shadow:
+        0 0 6px rgba(201,163,58,0.6),
+        0 0 12px rgba(201,163,58,0.4);
+    }
+
+    /* kardcsapás fénycsík */
+    .keretes-szekcio h2::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.6),
+        transparent
+      );
+      transform: skewX(-25deg);
+    }
+
+    .keretes-szekcio h2:hover::before {
+      animation: swordSlash 0.7s ease forwards;
+    }
+
+    @keyframes swordSlash {
+      100% {
+        left: 125%;
+      }
+    }
+
     #bemutatkozas {
       font-family: 'IM Fell English SC', serif;
       color: #4b1e1e;
       line-height: 1.8;
     }
+
     #bemutatkozas p {
       font-family: 'Crimson Pro', serif;
       color: #532d1e;
-    }
-    #bemutatkozas ul li {
-      font-family: 'Cinzel Decorative', serif;
-      color: #7a3d0e;
-      font-weight: bold;
-    }
-    #bemutatkozas strong {
-      color: #a65c00;
-      font-family: 'Cinzel Decorative', serif;
-    }
-    #bemutatkozas p:first-of-type::first-letter {
-      font-size: 2.8em;
-      float: left;
-      color: #8b1c13;
-      padding-right: 6px;
-      font-weight: bold;
-      font-family: 'Cinzel Decorative', serif;
     }
 
     #kapcsolat {
       font-family: 'Crimson Pro', serif;
       color: #3d1f10;
-    }
-    #kapcsolat strong {
-      font-family: 'Cinzel Decorative', serif;
-      color: #7a3d0e;
-      font-size: 1.2em;
-    }
-    #kapcsolat a {
-      color: #6c2f0d;
-      text-decoration: none;
-    }
-    #kapcsolat a:hover {
-      text-decoration: underline;
     }
 
     .gallery {
@@ -144,6 +173,7 @@
       overflow: hidden;
       margin: 0 auto;
     }
+
     .gallery img {
       width: 100%;
       height: 500px;
@@ -154,6 +184,7 @@
       opacity: 0;
       transition: opacity 1s ease-in-out;
     }
+
     .gallery img.active {
       opacity: 1;
       z-index: 2;
@@ -166,44 +197,77 @@
       color: white;
     }
 
-    @media (max-width: 600px) {
+    /* 📱 MOBILOPTIMALIZÁLÁS */
+    @media (max-width: 768px) {
+
       body {
         font-size: 0.95em;
       }
-      header h1 {
-        font-size: 1.8em;
+
+      header {
+        height: 60vw;
+        min-height: 260px;
       }
-      .keretes-szekcio {
+
+      header .overlay {
         width: 90%;
-        padding: 5vw;
+        padding: 15px;
       }
+
+      header h1 {
+        font-size: 1.6em;
+      }
+
+      header p {
+        font-size: 1em;
+      }
+
+      .logo {
+        width: 60px;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 10px;
+      }
+
+      nav a {
+        flex: 1 1 45%;
+        margin: 0;
+        padding: 10px;
+        font-size: 0.95em;
+      }
+
+      .keretes-szekcio {
+        width: 92%;
+        padding: 20px;
+        margin: 20px auto;
+      }
+
       .gallery {
         height: auto;
       }
+
       .gallery img {
+        position: relative;
         height: auto;
         aspect-ratio: 4 / 3;
-        position: relative;
       }
-      nav {
-        flex-wrap: wrap;
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-      }
-      nav a {
-        flex: 1 1 auto;
-        min-width: 100px;
-        text-align: center;
-        padding: 12px 20px;
-        font-size: 1.1em;
+
+      footer {
+        font-size: 0.9em;
+        padding: 15px;
       }
     }
   </style>
 </head>
+
 <body>
+
   <header>
-    <img src="borito.jpg" alt="Fejléc kép" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:1;" />
+    <img src="borito.jpg" alt="Fejléc kép">
     <div class="overlay">
       <img src="logo.png" alt="Egyesület Logója" class="logo" />
       <h1>Bajvívó Lovagok Egyesülete</h1>
@@ -337,7 +401,6 @@
 </body>
 
 </html>
-
 
 
 
