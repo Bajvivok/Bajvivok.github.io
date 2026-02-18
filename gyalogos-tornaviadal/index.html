@@ -1,168 +1,194 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gyalogos Tornaviadal</title>
-  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Cinzel+Decorative&family=Crimson+Pro&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      background: url('background_seamless_mirrored.png') repeat top left;
-      background-size: cover;
-      font-family: 'IM Fell English SC', serif;
-      color: #3a2616;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gyalogos Tornaviadal</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Cinzel+Decorative&family=Crimson+Pro&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  background: url('background_seamless_mirrored.png') repeat top left;
+  background-size: cover;
+  font-family: 'IM Fell English SC', serif;
+  color: #3a2616;
+}
 
-    header {
-      position: relative;
-      text-align: center;
-      padding: 40px 20px;
-      background: #e8dcc2;
-      border-bottom: 3px solid #7b5b3e;
-    }
+header {
+  position: relative;
+  text-align: center;
+  padding: 30px 15px;
+  background: #e8dcc2;
+  border-bottom: 3px solid #7b5b3e;
+}
 
-    .header-image-left {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 120px;
-      margin-left: 10px;
-    }
+.header-image-left,
+.header-image-right {
+  position: absolute;
+  bottom: 0;
+  height: 100px;
+}
 
-    .header-image-right {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      height: 120px;
-      margin-right: 10px;
-    }
+.header-image-left { left: 10px; }
+.header-image-right { right: 10px; }
 
-    header h1 {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 2.5em;
-      color: #6b2d1a;
-      margin-bottom: 10px;
-    }
+header h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2.4em;
+  color: #6b2d1a;
+  margin-bottom: 8px;
+}
 
-    header p {
-      font-size: 1.1em;
-      font-family: 'Crimson Pro', serif;
-    }
+header p {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.1em;
+  margin: 0;
+}
 
-    nav {
-      background: url('anjou-liliom-minta.jpg') center center / cover no-repeat;
-      text-align: center;
-      padding: 15px;
-    }
+nav {
+  background: url('anjou-liliom-minta.jpg') center center / cover no-repeat;
+  text-align: center;
+  padding: 10px 5px;
+}
 
-    nav a {
-      color: #fff;
-      margin: 0 20px;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 10px 15px;
-      display: inline-block;
-      background-color: rgba(58, 38, 22, 0.7);
-      border-radius: 8px;
-      transition: background-color 0.3s, transform 0.3s;
-    }
+nav a {
+  color: #fff;
+  margin: 5px 8px;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 6px 10px;
+  display: inline-block;
+  background-color: rgba(58, 38, 22, 0.7);
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.3s;
+  font-size: 0.95em;
+}
 
-    nav a:hover {
-      background-color: rgba(242, 209, 61, 0.9);
-      color: #2e1d12;
-      transform: scale(1.1);
-    }
+nav a:hover {
+  background-color: rgba(242, 209, 61, 0.9);
+  color: #2e1d12;
+  transform: scale(1.1);
+}
 
-    .separator {
-      height: 8px;
-      background-color: #4e3620;
-      background-image: linear-gradient(to right, #3a2616, #7b5b3e, #3a2616);
-      border-top: 2px solid #1e1307;
-      border-bottom: 2px solid #1e1307;
-    }
+.separator {
+  height: 8px;
+  background-image: linear-gradient(to right, #3a2616, #7b5b3e, #3a2616);
+  border-top: 2px solid #1e1307;
+  border-bottom: 2px solid #1e1307;
+}
 
-    .video-gallery {
+.video-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 30px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.video-frame {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border: 4px double #5e1c13;
+  background-color: #f8f1e5;
+  box-shadow: 0 0 10px rgba(58, 38, 22, 0.5);
+}
+
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-title {
+  text-align: center;
+  font-family: 'Cinzel Decorative', serif;
+  color: #5e1c13;
+  margin: 8px 0;
+  font-size: 1.1em;
+}
+
+.grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
-  padding: 40px;
-  max-width: 1000px;
-  margin: 0 auto;
+  padding: 30px 20px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-    .video-frame {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border: 4px double #5e1c13;
-      background-color: #f8f1e5;
-      box-shadow: 0 0 10px rgba(58, 38, 22, 0.5);
-    }
+.lovag {
+  text-align: center;
+  font-family: 'Crimson Pro', serif;
+}
 
-    .video-frame iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
+.lovag-kep {
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
-      padding: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+.nev {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #5e1c13;
+  margin: 10px 0 5px;
+}
 
-    .lovag {
-      text-align: center;
-      font-family: 'Crimson Pro', serif;
-    }
+.leiras {
+  font-size: 1em;
+  color: #4e3c2a;
+  white-space: pre-line;
+}
 
-    .lovag-kep {
-      display: block;
-      width: 100%;
-      max-height: 520px;
-      object-fit: contain;
-    }
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  background-color: #e2d4b7;
+  color: #3a2616;
+  border-top: 2px solid #7b5b3e;
+}
 
-    .nev {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 1.5em;
-      font-weight: 700;
-      color: #5e1c13;
-      margin: 15px 0 5px;
-    }
+/* Flip kártya */
+.flip-container {
+  perspective: 1000px;
+}
 
-    .leiras {
-      font-size: 1.05em;
-      color: #4e3c2a;
-      white-space: pre-line;
-    }
+.flipper {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      background-color: #e2d4b7;
-      color: #3a2616;
-      border-top: 2px solid #7b5b3e;
-    }
+.flip-container:hover .flipper {
+  transform: rotateY(180deg);
+}
 
-    @media (max-width: 700px) {
-  .grid,
-  .video-gallery {
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+/* --- Mobil optimalizálás --- */
+@media (max-width: 900px) {
+  .video-gallery,
+  .grid {
     grid-template-columns: 1fr;
-    padding: 20px;
-  }
-
-  .video-title {
-    font-size: 1.2em;
-    margin: 8px 0;
+    padding: 20px 10px;
   }
 
   .video-frame {
@@ -173,88 +199,62 @@
   .header-image-right {
     display: none;
   }
+
+  header h1 {
+    font-size: 2em;
+  }
+
+  header p {
+    font-size: 1em;
+  }
+
+  nav a {
+    font-size: 0.9em;
+    margin: 5px 5px;
+    padding: 5px 8px;
+  }
 }
 
+@media (max-width: 500px) {
+  header h1 {
+    font-size: 1.6em;
+  }
+  header p {
+    font-size: 0.9em;
+  }
   .video-title {
+    font-size: 1em;
+  }
+  .nev {
     font-size: 1.2em;
-    margin: 8px 0;
   }
-
-  .video-frame {
-    border-width: 2px;
-  }
-
-  .header-image-left,
-  .header-image-right {
-    display: none;
+  .leiras {
+    font-size: 0.95em;
   }
 }
-      .video-gallery {
-        grid-template-columns: 1fr;
-        padding: 20px;
-      }
-      .header-image-left,
-      .header-image-right {
-        display: none;
-      }
-    }
-
-    .flip-container {
-      perspective: 1000px;
-    }
-
-    .flipper {
-      position: relative;
-      width: 100%;
-      height: 520px;
-      transform-style: preserve-3d;
-      transition: transform 0.6s;
-    }
-
-    .flip-container:hover .flipper {
-      transform: rotateY(180deg);
-    }
-
-    .front, .back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-    }
-
-    .back {
-      transform: rotateY(180deg);
-    }
-      .video-title {
-      text-align: center;
-      font-family: 'Cinzel Decorative', serif;
-      color: #5e1c13;
-      margin: 10px 0;
-    }
-  </style>
+</style>
 </head>
 <body>
-  <header>
-    <img src="IMG_0244_transparent.png" alt="Lovagok harca" class="header-image-left" />
-    <img src="IMG_0252.PNG" alt="Lovagok vívása" class="header-image-right" />
-    <h1>Gyalogos Tornaviadal</h1>
-    <p>Párviadalok</p>
-  </header>
+<header>
+  <img src="IMG_0244_transparent.png" alt="Lovagok harca" class="header-image-left" />
+  <img src="IMG_0252.PNG" alt="Lovagok vívása" class="header-image-right" />
+  <h1>Gyalogos Tornaviadal</h1>
+  <p>Párviadalok</p>
+</header>
 
-  <div class="separator"></div>
+<div class="separator"></div>
 
-  <nav>
-    <a href="../index.html">Vissza a főoldalra</a>
-    <a href="../bajvivo-lovagok/">Bajvívó Lovagok</a>
-    <a href="../kozepkori-jatekok/">Középkori Tábor</a>
-    <a href="../kronika-kepekben/">Krónika Képekben</a>
-    <a href="../diosdi-udvarhaz/">Diósdi Udvarház</a>
-  </nav>
+<nav>
+  <a href="../index.html">Vissza a főoldalra</a>
+  <a href="../bajvivo-lovagok/">Bajvívó Lovagok</a>
+  <a href="../kozepkori-jatekok/">Középkori Tábor</a>
+  <a href="../kronika-kepekben/">Krónika Képekben</a>
+  <a href="../diosdi-udvarhaz/">Diósdi Udvarház</a>
+</nav>
 
-  <div class="separator"></div>
+<div class="separator"></div>
 
-  
-    <section class="video-gallery">
+<section class="video-gallery">
   <div>
     <h3 class="video-title">Egykezes Kardvívás</h3>
     <div class="video-frame">
@@ -281,8 +281,7 @@
   </div>
 </section>
 
-  <div class="separator"></div>
+<div class="separator"></div>
+
 </body>
 </html>
-
-
