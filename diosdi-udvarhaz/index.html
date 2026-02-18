@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
 <style>
+/* --- Általános stílusok --- */
 body {
   margin: 0;
   background: url('background_seamless_mirrored.png') repeat;
@@ -20,28 +21,29 @@ body {
 header {
   position: relative;
   text-align: center;
-  padding: 40px 20px;
+  padding: 30px 15px;
   background: #e8dcc2;
   border-bottom: 4px double #7b5b3e;
 }
 
 header h1 {
   font-family: 'Cinzel Decorative', serif;
-  font-size: 2.6em;
+  font-size: 2.4em;
   color: #6b2d1a;
-  margin: 0 0 10px 0;
+  margin: 0 0 8px 0;
 }
 
 header p {
   font-family: 'Crimson Pro', serif;
-  font-size: 1.2em;
+  font-size: 1.1em;
+  margin: 0;
 }
 
 .header-image-left,
 .header-image-right {
   position: absolute;
   bottom: 0;
-  height: 120px;
+  height: 100px;
 }
 
 .header-image-left { left: 10px; }
@@ -50,17 +52,19 @@ header p {
 nav {
   background: url('anjou-liliom-minta.jpg') center / cover no-repeat;
   text-align: center;
-  padding: 15px;
+  padding: 10px 5px;
 }
 
 nav a {
   color: #fff;
-  margin: 0 15px;
+  margin: 5px 5px;
   text-decoration: none;
   font-weight: bold;
-  padding: 10px 14px;
+  padding: 6px 10px;
   background: rgba(58,38,22,0.7);
   border-radius: 8px;
+  display: inline-block;
+  font-size: 0.95em;
 }
 
 nav a:hover {
@@ -78,8 +82,8 @@ nav a:hover {
 .video-gallery {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  padding: 40px;
+  gap: 20px;
+  padding: 30px 20px;
   max-width: 1100px;
   margin: auto;
 }
@@ -102,7 +106,8 @@ nav a:hover {
 .video-title {
   text-align: center;
   font-family: 'Cinzel Decorative', serif;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  font-size: 1.1em;
 }
 
 #mapContainer {
@@ -152,10 +157,48 @@ nav a:hover {
   font-size: 1.2em;
 }
 
+/* --- Mobil optimalizálás --- */
 @media (max-width: 900px) {
-  .video-gallery { grid-template-columns: 1fr; }
-  #mapContainer { width: 95%; }
-  .header-image-left,.header-image-right { display:none; }
+  .video-gallery {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 20px 10px;
+  }
+  #mapContainer {
+    width: 95%;
+    height: 350px;
+  }
+  .header-image-left,
+  .header-image-right {
+    display: none;
+  }
+  header h1 {
+    font-size: 2em;
+  }
+  header p {
+    font-size: 1em;
+  }
+  nav a {
+    margin: 5px 5px;
+    padding: 6px 10px;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 500px) {
+  header h1 {
+    font-size: 1.6em;
+  }
+  header p {
+    font-size: 0.9em;
+  }
+  #fullscreenBtn {
+    padding: 8px 16px;
+    font-size: 0.9em;
+  }
+  #yearValue {
+    font-size: 1em;
+  }
 }
 </style>
 </head>
@@ -172,10 +215,10 @@ nav a:hover {
 
 <nav>
   <a href="../index.html">Főoldal</a>
-    <a href="/bajvivo-lovagok/">Bajvívó Lovagok</a>   
-    <a href="/gyalogos-tornaviadal/">Gyalogos Tornaviadal</a>     
-    <a href="/kozepkori-jatekok/">Középkori Tábor</a>     
-    <a href="/kronika-kepekben/">Krónika Képekben</a>
+  <a href="/bajvivo-lovagok/">Bajvívó Lovagok</a>
+  <a href="/gyalogos-tornaviadal/">Gyalogos Tornaviadal</a>
+  <a href="/kozepkori-jatekok/">Középkori Tábor</a>
+  <a href="/kronika-kepekben/">Krónika Képekben</a>
 </nav>
 
 <div class="separator"></div>
@@ -184,42 +227,37 @@ nav a:hover {
   <div>
     <div class="video-title">Dömötör nap 2025</div>
     <div class="video-frame">
-      <iframe src="https://www.youtube.com/embed/1YLEJ7whL1c" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/1YLEJ7whL1c" title="YouTube video" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
-
   <div>
     <div class="video-title">Cserszegtomaj Szent István nap 2021</div>
     <div class="video-frame">
-      <iframe src="https://www.youtube.com/embed/1nmsbJz_sWg" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/1nmsbJz_sWg" title="YouTube video" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
-
   <div>
     <div class="video-title">Gyöngyöshalász falunap 2017</div>
     <div class="video-frame">
-      <iframe src="https://www.youtube.com/embed/tL5hc02Q_IA?start=7" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/tL5hc02Q_IA?start=7" title="YouTube video" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
-
   <div>
     <div class="video-title">Győri Szent László napok 2014</div>
     <div class="video-frame">
-      <iframe src="https://www.youtube.com/embed/qmh7RYeMZx4?start=23" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/qmh7RYeMZx4?start=23" title="YouTube video" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
-
   <div>
     <div class="video-title">Nógrádi Várjátékok 2014</div>
     <div class="video-frame">
-      <iframe src="https://www.youtube.com/embed/XHzJnZYSHD4?start=18" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/XHzJnZYSHD4?start=18" title="YouTube video" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
-
   <div>
     <div class="video-title">HírTV 2003</div>
     <div class="video-frame">
-      <iframe src="https://www.youtube.com/embed/s4FJL6G1MNE?start=12" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/s4FJL6G1MNE?start=12" title="YouTube video" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 </section>
@@ -341,7 +379,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   fsBtn.addEventListener('click', ()=>{
     if(!enlarged){
       mapContainer.style.width='95%';
-      mapContainer.style.height='700px';
+      mapContainer.style.height='500px';
       enlarged = true;
     } else {
       mapContainer.style.width='75%';
